@@ -24,7 +24,7 @@ class FileAsDataframe:
 
     def execute(self):
         for algo in self.file.algorithms:
-            if algo.name == "pseudo":
+            if algo.name == "delete":
                 print(pseudo(self._dataframe, algo.options))
             else: raise NotImplementedError
 
