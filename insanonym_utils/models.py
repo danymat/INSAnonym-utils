@@ -2,16 +2,22 @@ from typing import List, Literal
 from pydantic import BaseModel, DirectoryPath, FilePath, Field
 
 
-class Row(BaseModel):
+class Column(BaseModel):
     name: str
-    row_type: Literal['int', 'str', 'datetime'] 
+    column_type: Literal['int', 'str', 'datetime'] 
     
 class FileModel(BaseModel):
     name: str
     path: FilePath
 
+class Algorithm(BaseModel):
+    name: str
+    options: dict
+    
 class FileConfigModel(BaseModel):
     name: str
     path: DirectoryPath
-    rows: List[Row] = Field(..., description= "Rows of submitted file")
-    rows_delimiter: Literal['\t', '\n'] = '\t'
+    columns: List[Column] = Field(..., description= "Columns of submitted file")
+    columns_delimiter: Literal['\t', '\n'] = '\t'
+    algorithms: List[Algorithm]
+    file_type: Literal['csv', 'json']

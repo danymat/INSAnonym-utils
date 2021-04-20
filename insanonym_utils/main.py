@@ -1,5 +1,5 @@
 from .config import config
-from .models import FileModel, FileConfigModel,Row
+from .models import FileModel, FileConfigModel,Column
 from .modules.Dataframe import FileAsDataframe
 from pydantic import ValidationError
 import argparse
@@ -17,7 +17,7 @@ try:
     model = FileConfigModel.parse_raw(configContent)
 
     df = FileAsDataframe(model)
-    print(df)
+    df.execute()
 
 except ValidationError as e:
     print(e)
