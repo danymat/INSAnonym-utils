@@ -37,7 +37,7 @@ Voici un exemple de fichier de configuration:
         {"name": "longitude", "column_type":"int" }
     ],
     "algorithms": [
-        { "name": "pseudo", "options": { "columns": [1,2] } }
+        { "name": "delete", "options": { "columns": [1,2] } }
     ],
     "file_type": "csv",
     "export": "False",
@@ -71,6 +71,7 @@ poetry run python -m insanonym-utils.main
 
 ## Roadmap
 
+- Créer la section algorithmes dans les docs
 - Ajouter plus d'algorithmes
 - Donner la possibilité d'ajouter des algorithmes 
 - Ajouter un docker d'installation
