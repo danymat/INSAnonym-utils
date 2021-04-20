@@ -18,6 +18,7 @@ try:
 
     df = FileAsDataframe(model)
     df.execute()
+    df.save()
 
 except ValidationError as e:
     print(e)
