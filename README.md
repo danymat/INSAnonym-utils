@@ -1,6 +1,6 @@
 # INSAnonym-utils
 
-INS'Anonym-utils dispose d'une librarie capable d'effectuer des opérations sur une table csv, dans le but de l'anonymiser.
+INS'Anonym-utils dispose d'une librarie capable d'effectuer des opérations sur une table, dans le but de l'anonymiser.
 
 Pour l'instant, elle est capable de:
 
