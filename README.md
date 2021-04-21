@@ -16,6 +16,13 @@ L'installation est compatible sur la version 3.9 de python.
 pip install insanonym-utils
 ```
 
+Pour mettre à jour à la version la plus récente:
+```bash
+pip install insanonym-utils --upgrade
+```
+Les notes de mise à jour sont dans l'onglet [Releases](https://github.com/danymat/INSAnonym-utils/releases) de Github.
+
+
 ## Usage
 
 Pour utiliser le script il vous faudra un fichier de configuration, intitulé `parser.cfg`.
@@ -58,11 +65,34 @@ Ce fichier va lire la table `dataset1.csv` dans le répertoire courant, contenan
     - `"output_name"` - le nom de sortie de la table exportée
     - `"output_format"` - le format d'exportation de la table (`csv`,`json`)
 
-1. Créer un fichier de configuration selon vos paramètres, au répertoire racine du projet
+1. Créer un fichier de configuration selon vos paramètres, intitulé `parser.cfg`.
 
-2. Executer la commande:
+*Note: toutes les commandes suivantes seront effectuées dans l'interpreteur python:*
+
+2. Nous allons ensuite lire le fichier de configuration
+
+```python
+from insanonym_utils import models
+model = models.FileConfigModel.parse_file('parser.cfg') 
+# Vous pouvez aussi spécifier un chemin absolu pour votre fichier de configuration: 
+# e.g models.FileConfigModel.parse_file('path/to/file/parser.cfg')
 ```
-poetry run anon
+
+3. Nous allons ensuite utiliser ce fichier de configuration pour executer les algorithmes:
+
+```python
+from insanonym_utils import runner
+r = runner.Runner(model)
+r.execute()
+```
+
+Par défaut, `r.execute()` enregistre la table résultante avec le nom spécifié dans le fichier de configuration.
+Passer `"export": "False"` dans le fichier de configuration va prévenir la sauvegarde automatique.
+
+Si toutefois vous voulez enregistrer la table résultante, vous pouvez le faire grâce au runner:
+
+```python
+r.save()
 ```
 
 ## Development
