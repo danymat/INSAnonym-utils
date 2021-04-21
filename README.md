@@ -10,7 +10,7 @@ Pour l'instant, elle est capable de:
 
 ## Installation
 
-L'installation est compatible sur la version 3.9 de python.
+L'installation est compatible sur la version `3.8` et `3.9 de python.
 
 ```bash
 pip install insanonym-utils
