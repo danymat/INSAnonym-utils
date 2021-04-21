@@ -10,14 +10,10 @@ Pour l'instant, elle est capable de:
 
 ## Installation
 
-Prérequis:
+L'installation est compatible sur la version 3.9 de python.
 
-- [Poetry](https://python-poetry.org/docs/#installation)
-
-```
-git clone https://github.com/danymat/INSAnonym-utils.git
-cd INSAnonym-utils
-poetry install 
+```bash
+pip install insanonym-utils
 ```
 
 ## Usage
@@ -69,7 +65,17 @@ Ce fichier va lire la table `dataset1.csv` dans le répertoire courant, contenan
 poetry run anon
 ```
 
-## Testing
+## Development
+
+Prérequis:
+
+- [Poetry](https://python-poetry.org/docs/#installation)
+
+```
+git clone https://github.com/danymat/INSAnonym-utils.git
+cd INSAnonym-utils
+poetry install 
+```
 
 Run the tests:
 ```bash
