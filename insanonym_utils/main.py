@@ -1,7 +1,6 @@
-from .config import config
 from .models import FileModel, FileConfigModel,Column
-from .modules.Dataframe import FileAsDataframe
-from .modules.FileConfig import readModel
+from .runner import Runner
+from .utils import readModel
 from pydantic import ValidationError
 import argparse
 from os import getcwd
@@ -13,9 +12,8 @@ def main():
 
     try: 
         model = readModel(args.directory, 'parser.cfg')
-        df = FileAsDataframe(model)
+        df = Runner(model)
         df.execute()
-        df.save()
 
     except ValidationError as e:
         print(e)
