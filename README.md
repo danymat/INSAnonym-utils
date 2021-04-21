@@ -69,6 +69,14 @@ Ce fichier va lire la table `dataset1.csv` dans le répertoire courant, contenan
 poetry run anon
 ```
 
+## Testing
+
+Run the tests:
+```bash
+cd tests
+poetry run pytest
+```
+
 ## Roadmap
 
 - Créer la section algorithmes dans les docs
