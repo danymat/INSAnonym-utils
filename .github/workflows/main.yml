@@ -25,4 +25,5 @@ jobs:
           poetry-version: ${{ matrix.poetry-version }}
       - name: Run tests
         run: |
+         poetry install
          poetry run bash -c "cd tests && pytest"
