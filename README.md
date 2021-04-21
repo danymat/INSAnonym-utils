@@ -86,6 +86,11 @@ r = runner.Runner(model)
 r.execute()
 ```
 
+Le dataframe résultant sera accessible par:
+```python
+print(r.dataframe)
+```
+
 Par défaut, `r.execute()` enregistre la table résultante avec le nom spécifié dans le fichier de configuration.
 Passer `"export": "False"` dans le fichier de configuration va prévenir la sauvegarde automatique.
 
