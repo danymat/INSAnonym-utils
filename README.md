@@ -66,7 +66,7 @@ Ce fichier va lire la table `dataset1.csv` dans le répertoire courant, contenan
 
 2. Executer la commande:
 ```
-poetry run python -m insanonym-utils.main
+poetry run anon
 ```
 
 ## Roadmap

@@ -1,27 +1,24 @@
 from .config import config
 from .models import FileModel, FileConfigModel,Column
 from .modules.Dataframe import FileAsDataframe
+from .modules.FileConfig import readModel
 from pydantic import ValidationError
 import argparse
-from os import getcwd, path
+from os import getcwd
 
-parser = argparse.ArgumentParser()
-parser.add_argument('-d', '--directory', help="specify a different directory to fetch config file", default=getcwd())
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-d', '--directory', help="specify a different directory to fetch config file", default=getcwd())
+    args = parser.parse_args()
 
-args = parser.parse_args()
-configFileName = 'parser.cfg' 
-try:
-    configFile = FileModel(name=configFileName, path=path.join(args.directory, configFileName)  )
-    f = open(configFile.path, "r")
-    configContent = f.read()
-    model = FileConfigModel.parse_raw(configContent)
+    try: 
+        model = readModel(args.directory, 'parser.cfg')
+        df = FileAsDataframe(model)
+        df.execute()
+        df.save()
 
-    df = FileAsDataframe(model)
-    df.execute()
-    df.save()
-
-except ValidationError as e:
-    print(e)
+    except ValidationError as e:
+        print(e)
 
 
 

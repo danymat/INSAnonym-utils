@@ -32,3 +32,4 @@ class FileConfigModel(BaseModel):
     file_type: Literal['csv', 'json']
     export: bool = True
     export_rules: Exporter
+
