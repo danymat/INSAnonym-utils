@@ -56,12 +56,10 @@ Le nom devra être le nom du script, soit dans le cas de l'exemple ci dessus:
 ```json
 ...
 "algorithms": [
-    ...
     { 
         "name": "custom_algorithm", 
         "options": { "group_by" : "latitude" }  
-    },
-    ...
+    }
 ]
 ...
 ```
