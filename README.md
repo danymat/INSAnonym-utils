@@ -65,7 +65,7 @@ Ce fichier va lire la table `dataset1.csv` dans le répertoire courant, contenan
     - `"output_name"` - le nom de sortie de la table exportée
     - `"output_format"` - le format d'exportation de la table (`csv`,`json`)
 
-1. Créer un fichier de configuration selon vos paramètres, intitulé `parser.cfg`.
+1. Créer un fichier de configuration simple, intitulé `parser.cfg`.
 
 *Note: toutes les commandes suivantes seront effectuées dans l'interpreteur python:*
 
