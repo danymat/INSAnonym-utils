@@ -27,6 +27,10 @@ Avec:
 
 ## Delete
 
+### Résumé
+
+Delete remplace toutes les valeurs des colonnes spécifiées par un texte de remplacement.
+
 ### Fichier de configuration
 
 ```json
