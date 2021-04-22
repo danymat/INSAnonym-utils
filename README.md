@@ -49,7 +49,7 @@ poetry run pytest
 
 ## Roadmap
 
-- [ ] Créer la section algorithmes dans les docs
+- [x] Créer la section algorithmes dans les docs
 - [ ] Ajouter plus d'algorithmes
 - [x] Donner la possibilité d'ajouter des algorithmes 
-- [ ] Générer un config file
+- [x] Générer un config file
