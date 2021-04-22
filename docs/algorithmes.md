@@ -11,12 +11,10 @@ Tous les algorithmes doivent être sous la forme:
 ```json
 ...
 "algorithms": [
-    ...
     { 
         "name": "", 
         "options": {}  
-    },
-    ...
+    }
 ]
 ...
 ```
