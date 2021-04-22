@@ -1,10 +1,6 @@
 
 name: "Tests"
-on:
-  # Run only when pushing to master branch
-  push:
-    branches:
-      - main
+on: [pull_request]
 jobs:
   ci:
     strategy:

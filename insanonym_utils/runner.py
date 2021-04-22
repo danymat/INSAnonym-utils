@@ -2,6 +2,7 @@ from os import path
 from pandas import read_json, read_csv
 from .models import FileConfigModel, FileModel
 from .algorithms import *
+import importlib
 
 class Runner:
 
@@ -27,7 +28,9 @@ class Runner:
         for algo in self.model.algorithms:
             if algo.name == "delete":
                 print(pseudo(self.dataframe, algo.options))
-            else: raise NotImplementedError
+            else: 
+                mod = importlib.import_module(algo.name)
+                mod.main(self.dataframe, algo.options)
         if self.model.export: self.save()
 
     def save(self):
