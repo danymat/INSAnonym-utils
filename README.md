@@ -1,4 +1,4 @@
-![](.images/INSA-2.png)
+![](.images/INSA-3.png)
 
 INS'Anonym-utils dispose d'une librarie capable d'effectuer des opérations sur une table, dans le but de l'anonymiser.
 
