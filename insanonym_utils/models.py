@@ -5,7 +5,8 @@ from pydantic import BaseModel, DirectoryPath, FilePath, Field
 
 class Column(BaseModel):
     name: str
-    column_type: Literal['int', 'str', 'datetime'] 
+    # column_type: Literal['int', 'str', 'datetime'] 
+    column_type: str
     
 class FileModel(BaseModel):
     name: str

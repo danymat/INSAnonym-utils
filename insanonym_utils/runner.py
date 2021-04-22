@@ -27,7 +27,7 @@ class Runner:
     def execute(self):
         for algo in self.model.algorithms:
             if algo.name == "delete":
-                print(pseudo(self.dataframe, algo.options))
+                hiding(self.dataframe, algo.options)
             else: 
                 mod = importlib.import_module(algo.name)
                 mod.main(self.dataframe, algo.options)
