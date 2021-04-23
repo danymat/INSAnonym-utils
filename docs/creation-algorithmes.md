@@ -64,4 +64,65 @@ Le nom devra être le nom du script, soit dans le cas de l'exemple ci dessus:
 ...
 ```
 
+## Exemple de script
 
+Voici un exemple de script pour montrer l'implémentation type d'un fichier.
+Nous l'intitulerons `example.py`
+
+
+```python
+def main(df, options):
+    """
+    Pseudo algorithm that replaces each specified row by an alias
+    """
+    for row in options.columns:
+        df.iloc[:, row] = options.alias
+    return df
+```
+
+Son appel dans le fichier de configuration sera tel que ceci:
+
+```json
+...
+"algorithms": [
+    { 
+        "name": "example", 
+        "options": { "columns" : [1], "alias": "DEL" }  
+    }
+]
+...
+```
+
+Appliquons l'algorithme sur le dataframe suivant:
+
+```
+     id                 date  latitude  longitude
+0     1  2015-03-04 00:35:48  0.527129   0.358134
+1     1  2015-03-04 00:35:49  0.341051   0.329298
+2     1  2015-03-04 00:35:50  0.705571   0.122502
+3     1  2015-03-04 00:35:52  0.618180   0.567444
+4     1  2015-03-04 00:35:54  0.686230   0.560744
+..   ..                  ...       ...        ...
+494   1  2015-03-04 01:03:28  0.788060   0.225917
+495   1  2015-03-04 01:03:30  0.668119   0.718251
+496   1  2015-03-04 01:03:32  0.173801   0.770294
+497   1  2015-03-04 01:03:33  0.835937   0.000620
+498   1  2015-03-04 01:03:35  0.350427   0.936959
+```
+
+Le Dataframe résultant sera alors:
+
+```
+     id                 date  latitude  longitude
+0     DEL  2015-03-04 00:35:48  0.527129   0.358134
+1     DEL  2015-03-04 00:35:49  0.341051   0.329298
+2     DEL  2015-03-04 00:35:50  0.705571   0.122502
+3     DEL  2015-03-04 00:35:52  0.618180   0.567444
+4     DEL  2015-03-04 00:35:54  0.686230   0.560744
+..   ..                  ...       ...        ...
+494   DEL  2015-03-04 01:03:28  0.788060   0.225917
+495   DEL  2015-03-04 01:03:30  0.668119   0.718251
+496   DEL  2015-03-04 01:03:32  0.173801   0.770294
+497   DEL  2015-03-04 01:03:33  0.835937   0.000620
+498   DEL  2015-03-04 01:03:35  0.350427   0.936959
+```
