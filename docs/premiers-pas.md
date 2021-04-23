@@ -64,15 +64,26 @@ model = models.FileConfigModel.parse_file('parser.cfg')
 # e.g models.FileConfigModel.parse_file('path/to/file/parser.cfg')
 ```
 
-3. Nous allons ensuite utiliser ce fichier de configuration pour executer les algorithmes:
+3. Nous allons ensuite utiliser ce fichier de configuration pour charger la table en mémoire:
 
 ```python
 from insanonym_utils import runner
 r = runner.Runner(model)
+```
+
+La base de données est maintenant chargée en mémoire. vous pouvez la visualiser en effectuant la commande:
+
+```python
+print(r.dataframe)
+```
+
+4. La Dataframe ayant fini de charger, nous pouvons executer les algorithmes spécifiés dans le fichier de configuration:
+
+```python
 r.execute()
 ```
 
-Le dataframe résultant sera accessible par:
+La dataframe résultant sera accessible par:
 ```python
 print(r.dataframe)
 ```
@@ -85,3 +96,44 @@ Si toutefois vous voulez enregistrer la table résultante, vous pouvez le faire 
 ```python
 r.save()
 ```
+
+## Multiples runners
+
+Si vous avez besoin de faire tourner plusieurs algorithmes indépendamment les uns des autres, vous pouvez le faire.
+Il vous suffit alors de créer un autre modèle prenant un autre fichier de configuration, tel que:
+
+```python
+model2 = models.FileConfigModel.parse_file('new_config_file.cfg') 
+```
+
+Et ainsi créer un deuxieme runner:
+
+```python
+r2 = runner.Runner(model2)
+```
+
+A noter toutefois qu'une deuxième Dataframe sera créée, donc cela peut s'avérer lourd si votre machine ne le supporte pas.
+
+## Considérations
+
+Nous vous proposons d'effectuer des tests sur des versions tronquées de votre table initiale, si sa taille originale est grande.
+
+Pour information, voici le temps de calcul de chaque étape du cycle sur un fichier de `1.7Go` (plus de `34 millions` de lignes):
+
+- Creation du runner (ouverture de la table en dataframe): `42.08s`.
+- Execution de l'algorithme `delete` sur une colonne: `1.83s`(Voir la section [algorithmes](algorithmes.md#delete) pour plus de détails).
+- Enregistrement de la table résultante: `1m.47s` (Format de sortie: csv)
+
+Pour pouvoir executer les opérations aussi rapidement, pandas a du mettre en RAM toute la table. 
+
+Assurez vous d'avoir une bonne configuration (au moins 8Go de RAM).
+
+(Les tests ont été effectués sur une machine personnelle, donc les specs sont ci-dessous)
+
+```
+OS: macOS 11.3 20E5217a x86_64
+CPU: Intel i5-7360U (4) @ 2.30GHz
+GPU: Intel Iris Plus Graphics 640
+Memory: 8192MiB
+```
+

@@ -13,6 +13,9 @@ Certaines implémentations effectuent le processus d'anonymisation ligne par lig
 
 D'autres utilisent des Dataframes, mais n'utilisent pas les méthodes qui permettent d'effectuer des opérations rapidement ([comparatif](https://engineering.upside.com/a-beginners-guide-to-optimizing-pandas-code-for-speed-c09ef2c6a4d6)).
 
+### A noter
+
+Attention toutefois: cette librairie ne dispose que de quelques algorithmes simples, et peu efficaces. Le but de la librarie est seulement de faciliter l'écriture, et le traitement des algorithmes sur un dataframe.
 
 ## Documentation
 
