@@ -1,4 +1,4 @@
-def hiding(df, options):
+def delete(df, options):
     """
     Pseudo algorithm that replace each specified row by Nan values
     """

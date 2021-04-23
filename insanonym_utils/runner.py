@@ -1,6 +1,6 @@
 from os import path
 from pandas import read_json, read_csv
-from .models import FileConfigModel, FileModel
+from .models import FileConfigModel, FileModel, CustomAlgorithm
 from .algorithms import *
 import importlib
 
@@ -26,8 +26,8 @@ class Runner:
 
     def execute(self):
         for algo in self.model.algorithms:
-            if algo.name == "delete":
-                hiding(self.dataframe, algo.options)
+            if not isinstance(algo, CustomAlgorithm):
+                globals()[algo.name](self.dataframe, algo.options)
             else: 
                 mod = importlib.import_module(algo.name)
                 mod.main(self.dataframe, algo.options)
