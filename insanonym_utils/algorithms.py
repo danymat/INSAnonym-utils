@@ -72,6 +72,7 @@ def disturb(df, options):
         The modified dataframe
     """
     df.iloc[:,options.column] = df.iloc[:,options.column].apply( lambda x: x+np.random.uniform(options.parameter) )
+    return df
 
 def pseudo(df, options):
     """
