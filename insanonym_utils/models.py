@@ -20,6 +20,15 @@ class DeleteAlgorithm(BaseModel):
     name: Literal['delete']
     options: DeleteOptions
 
+class DeleteIdOptions(BaseModel):
+    column: int
+    ids: List[int]
+    alias: str = 'DEL'
+
+class DeleteIdAlgorithm(BaseModel):
+    name: Literal['delete_ids']
+    options: DeleteIdOptions
+
 class CustomAlgorithm(BaseModel):
     name: str
     options: Optional[dict]
@@ -33,7 +42,7 @@ class FileConfigModel(BaseModel):
     path: DirectoryPath
     columns: List[Column] = Field(..., description= "Columns of submitted file")
     columns_delimiter: Literal['\t', '\n'] = '\t'
-    algorithms: List[Union[DeleteAlgorithm, CustomAlgorithm]]
+    algorithms: List[Union[DeleteAlgorithm, DeleteIdAlgorithm, CustomAlgorithm]]
     file_type: Literal['csv', 'json']
     export: bool = True
     export_rules: Exporter

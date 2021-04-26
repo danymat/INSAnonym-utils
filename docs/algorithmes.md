@@ -3,6 +3,9 @@
 ## Liste des algorithmes fournis
 
 - [Delete](#delete)
+- [Delete IDs](#delete_ids)
+
+Note: la documentation de l'implémentation des algorithmes se trouve [ici](code/insanonym_utils/algorithms.md)
 
 ## Schema
 
@@ -51,4 +54,30 @@ Delete remplace toutes les valeurs des colonnes spécifiées par un texte de rem
 - `"columns"` une liste d'index a supprimer 
 - `"alias"` (Optionnel, defaut: `Nan`) le texte de remplacement
 
+## Delete_Ids
 
+### Résumé
+
+Remplace tous les ID spécifiés par un alias
+
+### Fichier de configuration
+
+```json
+...
+"algorithms": [
+    { 
+        "name": "delete_ids", 
+        "options": { 
+            "column": 1, 
+            "ids": [512, 12],
+            "alias": "*"
+        } 
+    }
+]
+...
+```
+
+- `"delete_ids"` le nom de l'algorithme
+- `"column"` l'index de la colonne des identifiants
+- `"ids"` une liste d'identifiants à supprimer
+- `"alias"` (Optionnel, defaut: `"DEL"`) le texte de remplacement
