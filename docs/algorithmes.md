@@ -4,6 +4,8 @@
 
 - [Delete](#delete)
 - [Delete IDs](#delete_ids)
+- [Disturb](#disturb)
+- [Pseudo](#pseudo)
 
 Note: la documentation de l'implémentation des algorithmes se trouve [ici](https://danymat.github.io/INSAnonym-utils/algorithms.html).
 
@@ -108,3 +110,27 @@ Cet algorithme utilise la loi uniforme pour effectuer la perturbation.
 - `"disturb"` le nom de l'algorithme
 - `"column"` l'index de la colonne à perturber
 - `"parameter"` le paramètre de perturbation (loi uniforme)
+
+## Pseudo
+
+### Résumé
+
+Effectue une pseudo-anonymisation sur les valeurs d'une colonne.
+
+### Fichier de configuration
+
+```json
+...
+"algorithms": [
+    { 
+        "name": "pseudo", 
+        "options": { 
+            "column": 0
+        } 
+    }
+]
+...
+```
+
+- `"disturb"` le nom de l'algorithme
+- `"column"` l'index de la colonne à perturber

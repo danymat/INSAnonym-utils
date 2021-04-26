@@ -37,6 +37,13 @@ class DisturbAlgorithm(BaseModel):
     name: Literal['disturb']
     options: DisturbOptions
 
+class PseudoOptions(BaseModel):
+    column: int
+
+class PseudoAlgorithm(BaseModel):
+    name: Literal['pseudo']
+    options: PseudoOptions
+
 class CustomAlgorithm(BaseModel):
     name: str
     options: Optional[dict]
@@ -54,6 +61,7 @@ class FileConfigModel(BaseModel):
         DeleteAlgorithm, 
         DeleteIdAlgorithm, 
         DisturbAlgorithm, 
+        PseudoAlgorithm,
         CustomAlgorithm
     ]]
     file_type: Literal['csv', 'json']
