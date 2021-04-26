@@ -21,8 +21,8 @@ Attention toutefois: cette librairie ne dispose que de quelques algorithmes simp
 
 ### Premiers pas
 
-Pour comprendre le fonctionnement de la librairie, veuillez vous référer aux [premiers pas](docs/premiers-pas.md).
-Pour connaitre les algorithmes fournis par la librairie, consulter la section [Algorithmes](docs/algorithmes.md).
+Pour comprendre le fonctionnement de la librairie, veuillez vous référer aux [premiers pas](premiers-pas.md).
+Pour connaitre les algorithmes fournis par la librairie, consulter la section [Algorithmes](algorithmes.md).
 
 
 
