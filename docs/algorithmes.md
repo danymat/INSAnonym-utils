@@ -5,7 +5,7 @@
 - [Delete](#delete)
 - [Delete IDs](#delete_ids)
 
-Note: la documentation de l'implémentation des algorithmes se trouve [ici](code/insanonym_utils/algorithms.md)
+Note: la documentation de l'implémentation des algorithmes se trouve [ici](https://danymat.github.io/INSAnonym-utils/algorithms.html).
 
 ## Schema
 

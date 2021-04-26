@@ -5,10 +5,15 @@ from .algorithms import *
 import importlib
 
 class Runner:
-
+    """
+    Class used to create dataframe and execute algorithms
+    """
     def __init__(self, model: FileConfigModel):
         _file = FileModel(name=model.name, path=path.join(model.path, model.name))
         self.model = model
+        """`FileConfigModel` to use in the runner"""
+        self.dataframe = None
+        """The resulting `DataFrame`"""
         self._verifyRows(_file.path)
         if model.file_type == 'json':
             self.dataframe = read_json(path_or_buf=_file.path, orient='index')
@@ -25,6 +30,9 @@ class Runner:
 
 
     def execute(self):
+        """
+        Execute algorithms specified in model on dataframe
+        """
         for algo in self.model.algorithms:
             if not isinstance(algo, CustomAlgorithm):
                 globals()[algo.name](self.dataframe, algo.options)
@@ -34,6 +42,9 @@ class Runner:
         if self.model.export: self.save()
 
     def save(self):
+        """
+        Save the resulting dataframe to the specified location in model
+        """
         exporter = self.model.export_rules
         if exporter.output_format == 'csv':
             self.dataframe.to_csv(path_or_buf=exporter.output_name, sep=self.model.columns_delimiter, index=False)

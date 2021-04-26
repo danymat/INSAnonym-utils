@@ -3,7 +3,7 @@ from os import path, getcwd
 import json
 from pydantic.json import pydantic_encoder
 
-def readModel(directory, name):
+def _readModel(directory, name):
     configFile = FileModel(name=name, path=path.join(directory, name))
     model = FileConfigModel.parse_file(configFile.path)
     return model
