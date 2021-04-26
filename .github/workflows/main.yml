@@ -28,7 +28,7 @@ jobs:
           mkdir -p .deploy
           poetry run pdoc --html insanonym_utils --force -o .deploy
           mv .deploy/insanonym_utils .deploy/docs
-          cp docs/* .deploy/docs
+          cp -R docs/* .deploy/docs
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
