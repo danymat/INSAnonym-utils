@@ -31,7 +31,7 @@ from os import path, getcwd
 import json
 from pydantic.json import pydantic_encoder
 
-def readModel(directory, name):
+def _readModel(directory, name):
     configFile = FileModel(name=name, path=path.join(directory, name))
     model = FileConfigModel.parse_file(configFile.path)
     return model
@@ -70,21 +70,6 @@ def sample():
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="insanonym_utils.utils.readModel"><code class="name flex">
-<span>def <span class="ident">readModel</span></span>(<span>directory, name)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def readModel(directory, name):
-    configFile = FileModel(name=name, path=path.join(directory, name))
-    model = FileConfigModel.parse_file(configFile.path)
-    return model</code></pre>
-</details>
-</dd>
 <dt id="insanonym_utils.utils.sample"><code class="name flex">
 <span>def <span class="ident">sample</span></span>(<span>)</span>
 </code></dt>
@@ -139,7 +124,6 @@ def sample():
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
-<li><code><a title="insanonym_utils.utils.readModel" href="#insanonym_utils.utils.readModel">readModel</a></code></li>
 <li><code><a title="insanonym_utils.utils.sample" href="#insanonym_utils.utils.sample">sample</a></code></li>
 </ul>
 </li>
