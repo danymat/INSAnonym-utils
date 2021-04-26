@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.9.2" />
-<title>insanonym_utils.utils API documentation</title>
+<title>insanonym_utils.main API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,48 +19,32 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>insanonym_utils.utils</code></h1>
+<h1 class="title">Module <code>insanonym_utils.main</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from .models import FileModel, FileConfigModel
-from os import path, getcwd
-import json
-from pydantic.json import pydantic_encoder
+<pre><code class="python">from .models import FileModel, FileConfigModel,Column
+from .runner import Runner
+from .utils import readModel
+from pydantic import ValidationError
+import argparse
+from os import getcwd
 
-def readModel(directory, name):
-    configFile = FileModel(name=name, path=path.join(directory, name))
-    model = FileConfigModel.parse_file(configFile.path)
-    return model
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(&#39;-d&#39;, &#39;--directory&#39;, help=&#34;specify a different directory to fetch config file&#34;, default=getcwd())
+    args = parser.parse_args()
 
-def sample():
-    &#34;&#34;&#34;
-    Creates a sample config file in current directory
-    &#34;&#34;&#34;
-    sample = FileConfigModel.parse_raw(&#39;{ \
-    &#34;name&#34;: &#34;&#34;, \
-    &#34;path&#34;: &#34;.&#34;, \
-    &#34;columns&#34;: [ \
-        {&#34;name&#34;: &#34;&#34;, &#34;column_type&#34;: &#34;&#34; }, \
-        {&#34;name&#34;: &#34;&#34;, &#34;column_type&#34;: &#34;&#34; }, \
-        {&#34;name&#34;: &#34;&#34;, &#34;column_type&#34;: &#34;&#34; } \
-    ], \
-    &#34;algorithms&#34;: [ \
-    ], \
-    &#34;file_type&#34;: &#34;csv&#34;, \
-    &#34;export&#34;: &#34;False&#34;, \
-    &#34;export_rules&#34;: { \
-        &#34;output_name&#34;: &#34;output&#34;, \
-        &#34;output_format&#34;: &#34;csv&#34; \
-    } \
-}&#39;)
-    json_formatted = json.dumps(sample, indent = 4, default=pydantic_encoder)
-    with open(&#34;parser.cfg&#34;, &#34;x&#34;) as f:
-        f.write(json_formatted)
-    print(&#34;Output dir:&#34;, getcwd()) </code></pre>
+    try: 
+        model = readModel(args.directory, &#39;parser.cfg&#39;)
+        df = Runner(model)
+        df.execute()
+
+    except ValidationError as e:
+        print(e)</code></pre>
 </details>
 </section>
 <section>
@@ -70,8 +54,8 @@ def sample():
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="insanonym_utils.utils.readModel"><code class="name flex">
-<span>def <span class="ident">readModel</span></span>(<span>directory, name)</span>
+<dt id="insanonym_utils.main.main"><code class="name flex">
+<span>def <span class="ident">main</span></span>(<span>)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -79,46 +63,18 @@ def sample():
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def readModel(directory, name):
-    configFile = FileModel(name=name, path=path.join(directory, name))
-    model = FileConfigModel.parse_file(configFile.path)
-    return model</code></pre>
-</details>
-</dd>
-<dt id="insanonym_utils.utils.sample"><code class="name flex">
-<span>def <span class="ident">sample</span></span>(<span>)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Creates a sample config file in current directory</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def sample():
-    &#34;&#34;&#34;
-    Creates a sample config file in current directory
-    &#34;&#34;&#34;
-    sample = FileConfigModel.parse_raw(&#39;{ \
-    &#34;name&#34;: &#34;&#34;, \
-    &#34;path&#34;: &#34;.&#34;, \
-    &#34;columns&#34;: [ \
-        {&#34;name&#34;: &#34;&#34;, &#34;column_type&#34;: &#34;&#34; }, \
-        {&#34;name&#34;: &#34;&#34;, &#34;column_type&#34;: &#34;&#34; }, \
-        {&#34;name&#34;: &#34;&#34;, &#34;column_type&#34;: &#34;&#34; } \
-    ], \
-    &#34;algorithms&#34;: [ \
-    ], \
-    &#34;file_type&#34;: &#34;csv&#34;, \
-    &#34;export&#34;: &#34;False&#34;, \
-    &#34;export_rules&#34;: { \
-        &#34;output_name&#34;: &#34;output&#34;, \
-        &#34;output_format&#34;: &#34;csv&#34; \
-    } \
-}&#39;)
-    json_formatted = json.dumps(sample, indent = 4, default=pydantic_encoder)
-    with open(&#34;parser.cfg&#34;, &#34;x&#34;) as f:
-        f.write(json_formatted)
-    print(&#34;Output dir:&#34;, getcwd()) </code></pre>
+<pre><code class="python">def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(&#39;-d&#39;, &#39;--directory&#39;, help=&#34;specify a different directory to fetch config file&#34;, default=getcwd())
+    args = parser.parse_args()
+
+    try: 
+        model = readModel(args.directory, &#39;parser.cfg&#39;)
+        df = Runner(model)
+        df.execute()
+
+    except ValidationError as e:
+        print(e)</code></pre>
 </details>
 </dd>
 </dl>
@@ -139,8 +95,7 @@ def sample():
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
-<li><code><a title="insanonym_utils.utils.readModel" href="#insanonym_utils.utils.readModel">readModel</a></code></li>
-<li><code><a title="insanonym_utils.utils.sample" href="#insanonym_utils.utils.sample">sample</a></code></li>
+<li><code><a title="insanonym_utils.main.main" href="#insanonym_utils.main.main">main</a></code></li>
 </ul>
 </li>
 </ul>
