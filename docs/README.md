@@ -1,4 +1,4 @@
-# INSAnonym-utils
+![](https://raw.githubusercontent.com/danymat/INSAnonym-utils/main/.images/INSA-3.png)
 
 ## Qu'est-ce que insanonym-utils?
 
