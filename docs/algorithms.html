@@ -97,7 +97,8 @@ def disturb(df, options):
     df: Dataframe
         The modified dataframe
     &#34;&#34;&#34;
-    df.iloc[:,options.column] = df.iloc[:,options.column].apply( lambda x: x+np.random.uniform(options.parameter) )</code></pre>
+    df.iloc[:,options.column] = df.iloc[:,options.column].apply( lambda x: x+np.random.uniform(options.parameter) )
+    return df</code></pre>
 </details>
 </section>
 <section>
@@ -255,7 +256,8 @@ options.parameter: float
     df: Dataframe
         The modified dataframe
     &#34;&#34;&#34;
-    df.iloc[:,options.column] = df.iloc[:,options.column].apply( lambda x: x+np.random.uniform(options.parameter) )</code></pre>
+    df.iloc[:,options.column] = df.iloc[:,options.column].apply( lambda x: x+np.random.uniform(options.parameter) )
+    return df</code></pre>
 </details>
 </dd>
 </dl>
