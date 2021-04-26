@@ -1,12 +1,18 @@
-def delete(df, options):
-    """
-    Delete algorithm that replace all values in a column by an alias.
+Module insanonym_utils.algorithms
+=================================
+
+Functions
+---------
+
+    
+`delete(df, options)`
+:   Delete algorithm that replace all values in a column by an alias.
     
     Parameters
     ----------
     **options: dict
         Object container
-
+    
     Other Parameters
     ----------------
         options.columns: list of int
@@ -17,20 +23,16 @@ def delete(df, options):
     -------
     df: Dataframe
         The modified dataframe
-    """
-    for col in options.columns:
-        df.iloc[:, col] = options.alias
-    return df
 
-def delete_ids(df, options):
-    """
-    Replaces given IDs by an alias
-
+    
+`delete_ids(df, options)`
+:   Replaces given IDs by an alias
+    
     Parameters
     ----------
     **options: dict
         Object container
-
+    
     Other Parameters
     ----------------
         options.column: int
@@ -43,6 +45,3 @@ def delete_ids(df, options):
     -------
     df: Dataframe
         The modified dataframe
-    """
-    df.iloc[:,options.column] = df.iloc[:,options.column].replace(options.ids, options.alias)
-    return df

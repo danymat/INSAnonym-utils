@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "insanonym-utils"
-version = "0.6.1"
+version = "0.7.0"
 description = "Execute anonymization scripts over a table"
 authors = ["Daniel Mathiot <d.danymat@gmail.com>"]
 
@@ -10,6 +10,7 @@ pydantic = "^1.8.1"
 pandas = "^1.2.4"
 numpy = "^1.20.2"
 pytest = "^6.2.3"
+pdoc3 = "^0.9.2"
 
 [tool.poetry.dev-dependencies]
 
