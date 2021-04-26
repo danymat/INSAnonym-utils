@@ -1,3 +1,5 @@
+import numpy as np
+
 def delete(df, options):
     """
     Delete algorithm that replace all values in a column by an alias.
@@ -46,3 +48,25 @@ def delete_ids(df, options):
     """
     df.iloc[:,options.column] = df.iloc[:,options.column].replace(options.ids, options.alias)
     return df
+
+def disturb(df, options):
+    """
+    Disturb given integer or float typed column with an uniform distribution with parameter p 
+
+    Parameters
+    ----------
+    **options: dict
+        Object container
+
+    Other Parameters
+    ----------------
+        options.column: int
+           Column index to apply algorithm
+        options.parameter: float
+            uniform parameter
+    Returns
+    -------
+    df: Dataframe
+        The modified dataframe
+    """
+    df.iloc[:,options.column] = df.iloc[:,options.column].apply( lambda x: x+np.random.uniform(options.parameter) )

@@ -81,3 +81,30 @@ Remplace tous les ID spécifiés par un alias
 - `"column"` l'index de la colonne des identifiants
 - `"ids"` une liste d'identifiants à supprimer
 - `"alias"` (Optionnel, defaut: `"DEL"`) le texte de remplacement
+
+## Disturb
+
+### Résumé
+
+Ajoute une perturbation [-parameter,+parameter] sur une colonne de la table.
+Cet algorithme utilise la loi uniforme pour effectuer la perturbation.
+
+### Fichier de configuration
+
+```json
+...
+"algorithms": [
+    { 
+        "name": "disturb", 
+        "options": { 
+            "column": 3, 
+            "parameter": 0.6
+        } 
+    }
+]
+...
+```
+
+- `"disturb"` le nom de l'algorithme
+- `"column"` l'index de la colonne à perturber
+- `"parameter"` le paramètre de perturbation (loi uniforme)

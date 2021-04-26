@@ -5,7 +5,7 @@ INS'Anonym-utils dispose d'une librarie capable d'effectuer des opérations sur 
 Pour l'instant, elle est capable de:
 
 - Créer un dataframe à partir de la table.
-- Effectuer l'algorithme de pseudo-anonymisation sur un ensemble de colonnes.
+- Effectuer plusieurs algorithmes simples sur la table en question
 - Executer des algorithmes créés par l'utilisateur
 - Exporter la dataframe au format choisi.
 
@@ -29,6 +29,7 @@ Les notes de mise à jour sont dans l'onglet [Releases](https://github.com/danym
 - Pour connaitre les algorithmes fournis par la librairie, consulter la section [Algorithmes](docs/algorithmes.md).
 - Pour comprendre comment ajouter son propre algorithme, consulter la section [Création d'algorithmes](docs/creation-algorithmes.md).
 - Pour voir la documentation détaillée du code source, consulter le site [INSAnonym-utils](https://danymat.github.io/INSAnonym-utils).
+
 ## Development
 
 Prérequis:
@@ -49,7 +50,4 @@ poetry run pytest
 
 ## Roadmap
 
-- [x] Créer la section algorithmes dans les docs
-- [ ] Ajouter plus d'algorithmes
-- [x] Donner la possibilité d'ajouter des algorithmes 
-- [x] Générer un config file
+La roadmap se situe ici: [Roadmap](https://github.com/danymat/INSAnonym-utils/projects/1).
