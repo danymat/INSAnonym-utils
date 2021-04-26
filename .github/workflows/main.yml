@@ -23,3 +23,12 @@ jobs:
         run: |
          poetry install
          poetry run bash -c "cd tests && pytest"
+      - name: Build docs
+        run: |
+          mkdir -p .deploy
+          poetry run pdoc --html insanonym_utils --force -o .deploy
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .deploy
