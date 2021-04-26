@@ -21,9 +21,9 @@ Attention toutefois: cette librairie ne dispose que de quelques algorithmes simp
 
 ### Premiers pas
 
-Pour comprendre le fonctionnement de la librairie, veuillez vous référer aux [premiers pas](https://github.com/danymat/INSAnonym-utils/blob/main/docs/premiers-pas.md).
-Pour connaitre les algorithmes fournis par la librairie, consulter la section [Algorithmes](https://github.com/danymat/INSAnonym-utils/blob/main/docs/algorithmes.md).
-Pour apprendre à créer ses propres algorithmes, consulter la section [Création d'Algorithmes](https://github.com/danymat/INSAnonym-utils/blob/main/docs/creation-algorithmes.md).
+- Pour comprendre le fonctionnement de la librairie, veuillez vous référer aux [premiers pas](https://github.com/danymat/INSAnonym-utils/blob/main/docs/premiers-pas.md).
+- Pour connaitre les algorithmes fournis par la librairie, consulter la section [Algorithmes](https://github.com/danymat/INSAnonym-utils/blob/main/docs/algorithmes.md).
+- Pour apprendre à créer ses propres algorithmes, consulter la section [Création d'Algorithmes](https://github.com/danymat/INSAnonym-utils/blob/main/docs/creation-algorithmes.md).
 
 
 
