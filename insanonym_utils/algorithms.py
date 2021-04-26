@@ -41,6 +41,7 @@ def delete_ids(df, options):
             IDs to delete
         options.alias: str, default='DEL'
             String value to replace affected IDs
+
     Returns
     -------
     df: Dataframe
@@ -64,9 +65,36 @@ def disturb(df, options):
            Column index to apply algorithm
         options.parameter: float
             uniform parameter
+
     Returns
     -------
     df: Dataframe
         The modified dataframe
     """
     df.iloc[:,options.column] = df.iloc[:,options.column].apply( lambda x: x+np.random.uniform(options.parameter) )
+
+def pseudo(df, options):
+    """
+    Find all unique ids and replace each of them by a random value
+
+    Parameters
+    ----------
+    **options: dict
+        Object container
+
+    Other Parameters
+    ----------------
+        options.column: int
+           Column index to apply algorithm
+
+    Returns
+    -------
+    df: Dataframe
+        The modified dataframe
+    """
+    # find all unique ids and create random unique values with size len(ids)+1000
+    # Example: if you have ids=[3,5,7], you can generate randomized=[1006,242,938]
+    ids = pd.unique( r.dataframe.iloc[:,options.column] )
+    randomized = np.random.choice(len(ids)+1000,size=len(ids), replace=False)
+    # replace all ids by randomized values
+    df.iloc[:,options.column] = df.iloc[:,options.column].replace(ids, randomized)
