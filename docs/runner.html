@@ -33,10 +33,15 @@ from .algorithms import *
 import importlib
 
 class Runner:
-
+    &#34;&#34;&#34;
+    Class used to create dataframe and execute algorithms
+    &#34;&#34;&#34;
     def __init__(self, model: FileConfigModel):
         _file = FileModel(name=model.name, path=path.join(model.path, model.name))
         self.model = model
+        &#34;&#34;&#34;`FileConfigModel` to use in the runner&#34;&#34;&#34;
+        self.dataframe = None
+        &#34;&#34;&#34;The resulting `DataFrame`&#34;&#34;&#34;
         self._verifyRows(_file.path)
         if model.file_type == &#39;json&#39;:
             self.dataframe = read_json(path_or_buf=_file.path, orient=&#39;index&#39;)
@@ -53,6 +58,9 @@ class Runner:
 
 
     def execute(self):
+        &#34;&#34;&#34;
+        Execute algorithms specified in model on dataframe
+        &#34;&#34;&#34;
         for algo in self.model.algorithms:
             if not isinstance(algo, CustomAlgorithm):
                 globals()[algo.name](self.dataframe, algo.options)
@@ -62,6 +70,9 @@ class Runner:
         if self.model.export: self.save()
 
     def save(self):
+        &#34;&#34;&#34;
+        Save the resulting dataframe to the specified location in model
+        &#34;&#34;&#34;
         exporter = self.model.export_rules
         if exporter.output_format == &#39;csv&#39;:
             self.dataframe.to_csv(path_or_buf=exporter.output_name, sep=self.model.columns_delimiter, index=False)
@@ -84,16 +95,21 @@ class Runner:
 <span>(</span><span>model: <a title="insanonym_utils.models.FileConfigModel" href="models.html#insanonym_utils.models.FileConfigModel">FileConfigModel</a>)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Class used to create dataframe and execute algorithms</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class Runner:
-
+    &#34;&#34;&#34;
+    Class used to create dataframe and execute algorithms
+    &#34;&#34;&#34;
     def __init__(self, model: FileConfigModel):
         _file = FileModel(name=model.name, path=path.join(model.path, model.name))
         self.model = model
+        &#34;&#34;&#34;`FileConfigModel` to use in the runner&#34;&#34;&#34;
+        self.dataframe = None
+        &#34;&#34;&#34;The resulting `DataFrame`&#34;&#34;&#34;
         self._verifyRows(_file.path)
         if model.file_type == &#39;json&#39;:
             self.dataframe = read_json(path_or_buf=_file.path, orient=&#39;index&#39;)
@@ -110,6 +126,9 @@ class Runner:
 
 
     def execute(self):
+        &#34;&#34;&#34;
+        Execute algorithms specified in model on dataframe
+        &#34;&#34;&#34;
         for algo in self.model.algorithms:
             if not isinstance(algo, CustomAlgorithm):
                 globals()[algo.name](self.dataframe, algo.options)
@@ -119,6 +138,9 @@ class Runner:
         if self.model.export: self.save()
 
     def save(self):
+        &#34;&#34;&#34;
+        Save the resulting dataframe to the specified location in model
+        &#34;&#34;&#34;
         exporter = self.model.export_rules
         if exporter.output_format == &#39;csv&#39;:
             self.dataframe.to_csv(path_or_buf=exporter.output_name, sep=self.model.columns_delimiter, index=False)
@@ -126,18 +148,32 @@ class Runner:
             self.dataframe.to_json(exporter.output_name, index=False)
         else: raise NotImplementedError</code></pre>
 </details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="insanonym_utils.runner.Runner.dataframe"><code class="name">var <span class="ident">dataframe</span></code></dt>
+<dd>
+<div class="desc"><p>The resulting <code>DataFrame</code></p></div>
+</dd>
+<dt id="insanonym_utils.runner.Runner.model"><code class="name">var <span class="ident">model</span></code></dt>
+<dd>
+<div class="desc"><p><code>FileConfigModel</code> to use in the runner</p></div>
+</dd>
+</dl>
 <h3>Methods</h3>
 <dl>
 <dt id="insanonym_utils.runner.Runner.execute"><code class="name flex">
 <span>def <span class="ident">execute</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Execute algorithms specified in model on dataframe</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def execute(self):
+    &#34;&#34;&#34;
+    Execute algorithms specified in model on dataframe
+    &#34;&#34;&#34;
     for algo in self.model.algorithms:
         if not isinstance(algo, CustomAlgorithm):
             globals()[algo.name](self.dataframe, algo.options)
@@ -151,12 +187,15 @@ class Runner:
 <span>def <span class="ident">save</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Save the resulting dataframe to the specified location in model</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def save(self):
+    &#34;&#34;&#34;
+    Save the resulting dataframe to the specified location in model
+    &#34;&#34;&#34;
     exporter = self.model.export_rules
     if exporter.output_format == &#39;csv&#39;:
         self.dataframe.to_csv(path_or_buf=exporter.output_name, sep=self.model.columns_delimiter, index=False)
@@ -186,7 +225,9 @@ class Runner:
 <li>
 <h4><code><a title="insanonym_utils.runner.Runner" href="#insanonym_utils.runner.Runner">Runner</a></code></h4>
 <ul class="">
+<li><code><a title="insanonym_utils.runner.Runner.dataframe" href="#insanonym_utils.runner.Runner.dataframe">dataframe</a></code></li>
 <li><code><a title="insanonym_utils.runner.Runner.execute" href="#insanonym_utils.runner.Runner.execute">execute</a></code></li>
+<li><code><a title="insanonym_utils.runner.Runner.model" href="#insanonym_utils.runner.Runner.model">model</a></code></li>
 <li><code><a title="insanonym_utils.runner.Runner.save" href="#insanonym_utils.runner.Runner.save">save</a></code></li>
 </ul>
 </li>
