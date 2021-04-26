@@ -28,7 +28,7 @@ Les notes de mise à jour sont dans l'onglet [Releases](https://github.com/danym
 - [Premiers pas](https://github.com/danymat/INSAnonym-utils/blob/main/docs/premiers-pas.md)
 - Pour connaitre les algorithmes fournis par la librairie, consulter la section [Algorithmes](docs/algorithmes.md).
 - Pour comprendre comment ajouter son propre algorithme, consulter la section [Création d'algorithmes](docs/creation-algorithmes.md).
-
+- Pour voir la documentation détaillée du code source, consulter le site [INSAnonym-utils](https://danymat.github.io/INSAnonym-utils).
 ## Development
 
 Prérequis:
