@@ -69,6 +69,7 @@ def delete_ids(df, options):
             IDs to delete
         options.alias: str, default=&#39;DEL&#39;
             String value to replace affected IDs
+
     Returns
     -------
     df: Dataframe
@@ -92,13 +93,40 @@ def disturb(df, options):
            Column index to apply algorithm
         options.parameter: float
             uniform parameter
+
     Returns
     -------
     df: Dataframe
         The modified dataframe
     &#34;&#34;&#34;
     df.iloc[:,options.column] = df.iloc[:,options.column].apply( lambda x: x+np.random.uniform(options.parameter) )
-    return df</code></pre>
+    return df
+
+def pseudo(df, options):
+    &#34;&#34;&#34;
+    Find all unique ids and replace each of them by a random value
+
+    Parameters
+    ----------
+    **options: dict
+        Object container
+
+    Other Parameters
+    ----------------
+        options.column: int
+           Column index to apply algorithm
+
+    Returns
+    -------
+    df: Dataframe
+        The modified dataframe
+    &#34;&#34;&#34;
+    # find all unique ids and create random unique values with size len(ids)+1000
+    # Example: if you have ids=[3,5,7], you can generate randomized=[1006,242,938]
+    ids = pd.unique( r.dataframe.iloc[:,options.column] )
+    randomized = np.random.choice(len(ids)+1000,size=len(ids), replace=False)
+    # replace all ids by randomized values
+    df.iloc[:,options.column] = df.iloc[:,options.column].replace(ids, randomized)</code></pre>
 </details>
 </section>
 <section>
@@ -202,6 +230,7 @@ options.alias: str, default='DEL'
             IDs to delete
         options.alias: str, default=&#39;DEL&#39;
             String value to replace affected IDs
+
     Returns
     -------
     df: Dataframe
@@ -251,6 +280,7 @@ options.parameter: float
            Column index to apply algorithm
         options.parameter: float
             uniform parameter
+
     Returns
     -------
     df: Dataframe
@@ -258,6 +288,56 @@ options.parameter: float
     &#34;&#34;&#34;
     df.iloc[:,options.column] = df.iloc[:,options.column].apply( lambda x: x+np.random.uniform(options.parameter) )
     return df</code></pre>
+</details>
+</dd>
+<dt id="insanonym_utils.algorithms.pseudo"><code class="name flex">
+<span>def <span class="ident">pseudo</span></span>(<span>df, options)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find all unique ids and replace each of them by a random value</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>**options</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Object container</dd>
+</dl>
+<h2 id="other-parameters">Other Parameters</h2>
+<pre><code>options.column: int
+   Column index to apply algorithm
+</code></pre>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>df</code></strong> :&ensp;<code>Dataframe</code></dt>
+<dd>The modified dataframe</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pseudo(df, options):
+    &#34;&#34;&#34;
+    Find all unique ids and replace each of them by a random value
+
+    Parameters
+    ----------
+    **options: dict
+        Object container
+
+    Other Parameters
+    ----------------
+        options.column: int
+           Column index to apply algorithm
+
+    Returns
+    -------
+    df: Dataframe
+        The modified dataframe
+    &#34;&#34;&#34;
+    # find all unique ids and create random unique values with size len(ids)+1000
+    # Example: if you have ids=[3,5,7], you can generate randomized=[1006,242,938]
+    ids = pd.unique( r.dataframe.iloc[:,options.column] )
+    randomized = np.random.choice(len(ids)+1000,size=len(ids), replace=False)
+    # replace all ids by randomized values
+    df.iloc[:,options.column] = df.iloc[:,options.column].replace(ids, randomized)</code></pre>
 </details>
 </dd>
 </dl>
@@ -281,6 +361,7 @@ options.parameter: float
 <li><code><a title="insanonym_utils.algorithms.delete" href="#insanonym_utils.algorithms.delete">delete</a></code></li>
 <li><code><a title="insanonym_utils.algorithms.delete_ids" href="#insanonym_utils.algorithms.delete_ids">delete_ids</a></code></li>
 <li><code><a title="insanonym_utils.algorithms.disturb" href="#insanonym_utils.algorithms.disturb">disturb</a></code></li>
+<li><code><a title="insanonym_utils.algorithms.pseudo" href="#insanonym_utils.algorithms.pseudo">pseudo</a></code></li>
 </ul>
 </li>
 </ul>

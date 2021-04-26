@@ -65,6 +65,13 @@ class DisturbAlgorithm(BaseModel):
     name: Literal[&#39;disturb&#39;]
     options: DisturbOptions
 
+class PseudoOptions(BaseModel):
+    column: int
+
+class PseudoAlgorithm(BaseModel):
+    name: Literal[&#39;pseudo&#39;]
+    options: PseudoOptions
+
 class CustomAlgorithm(BaseModel):
     name: str
     options: Optional[dict]
@@ -82,6 +89,7 @@ class FileConfigModel(BaseModel):
         DeleteAlgorithm, 
         DeleteIdAlgorithm, 
         DisturbAlgorithm, 
+        PseudoAlgorithm,
         CustomAlgorithm
     ]]
     file_type: Literal[&#39;csv&#39;, &#39;json&#39;]
@@ -412,6 +420,7 @@ class FileConfigModel(BaseModel):
         DeleteAlgorithm, 
         DeleteIdAlgorithm, 
         DisturbAlgorithm, 
+        PseudoAlgorithm,
         CustomAlgorithm
     ]]
     file_type: Literal[&#39;csv&#39;, &#39;json&#39;]
@@ -425,7 +434,7 @@ class FileConfigModel(BaseModel):
 </ul>
 <h3>Class variables</h3>
 <dl>
-<dt id="insanonym_utils.models.FileConfigModel.algorithms"><code class="name">var <span class="ident">algorithms</span> : List[Union[<a title="insanonym_utils.models.DeleteAlgorithm" href="#insanonym_utils.models.DeleteAlgorithm">DeleteAlgorithm</a>, <a title="insanonym_utils.models.DeleteIdAlgorithm" href="#insanonym_utils.models.DeleteIdAlgorithm">DeleteIdAlgorithm</a>, <a title="insanonym_utils.models.DisturbAlgorithm" href="#insanonym_utils.models.DisturbAlgorithm">DisturbAlgorithm</a>, <a title="insanonym_utils.models.CustomAlgorithm" href="#insanonym_utils.models.CustomAlgorithm">CustomAlgorithm</a>]]</code></dt>
+<dt id="insanonym_utils.models.FileConfigModel.algorithms"><code class="name">var <span class="ident">algorithms</span> : List[Union[<a title="insanonym_utils.models.DeleteAlgorithm" href="#insanonym_utils.models.DeleteAlgorithm">DeleteAlgorithm</a>, <a title="insanonym_utils.models.DeleteIdAlgorithm" href="#insanonym_utils.models.DeleteIdAlgorithm">DeleteIdAlgorithm</a>, <a title="insanonym_utils.models.DisturbAlgorithm" href="#insanonym_utils.models.DisturbAlgorithm">DisturbAlgorithm</a>, <a title="insanonym_utils.models.PseudoAlgorithm" href="#insanonym_utils.models.PseudoAlgorithm">PseudoAlgorithm</a>, <a title="insanonym_utils.models.CustomAlgorithm" href="#insanonym_utils.models.CustomAlgorithm">CustomAlgorithm</a>]]</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -486,6 +495,65 @@ class FileConfigModel(BaseModel):
 <div class="desc"></div>
 </dd>
 <dt id="insanonym_utils.models.FileModel.path"><code class="name">var <span class="ident">path</span> : pydantic.types.FilePath</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="insanonym_utils.models.PseudoAlgorithm"><code class="flex name class">
+<span>class <span class="ident">PseudoAlgorithm</span></span>
+<span>(</span><span>**data: Any)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PseudoAlgorithm(BaseModel):
+    name: Literal[&#39;pseudo&#39;]
+    options: PseudoOptions</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>pydantic.main.BaseModel</li>
+<li>pydantic.utils.Representation</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="insanonym_utils.models.PseudoAlgorithm.name"><code class="name">var <span class="ident">name</span> : Literal['pseudo']</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="insanonym_utils.models.PseudoAlgorithm.options"><code class="name">var <span class="ident">options</span> : <a title="insanonym_utils.models.PseudoOptions" href="#insanonym_utils.models.PseudoOptions">PseudoOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="insanonym_utils.models.PseudoOptions"><code class="flex name class">
+<span>class <span class="ident">PseudoOptions</span></span>
+<span>(</span><span>**data: Any)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PseudoOptions(BaseModel):
+    column: int</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>pydantic.main.BaseModel</li>
+<li>pydantic.utils.Representation</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="insanonym_utils.models.PseudoOptions.column"><code class="name">var <span class="ident">column</span> : int</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -589,6 +657,19 @@ class FileConfigModel(BaseModel):
 <ul class="">
 <li><code><a title="insanonym_utils.models.FileModel.name" href="#insanonym_utils.models.FileModel.name">name</a></code></li>
 <li><code><a title="insanonym_utils.models.FileModel.path" href="#insanonym_utils.models.FileModel.path">path</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="insanonym_utils.models.PseudoAlgorithm" href="#insanonym_utils.models.PseudoAlgorithm">PseudoAlgorithm</a></code></h4>
+<ul class="">
+<li><code><a title="insanonym_utils.models.PseudoAlgorithm.name" href="#insanonym_utils.models.PseudoAlgorithm.name">name</a></code></li>
+<li><code><a title="insanonym_utils.models.PseudoAlgorithm.options" href="#insanonym_utils.models.PseudoAlgorithm.options">options</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="insanonym_utils.models.PseudoOptions" href="#insanonym_utils.models.PseudoOptions">PseudoOptions</a></code></h4>
+<ul class="">
+<li><code><a title="insanonym_utils.models.PseudoOptions.column" href="#insanonym_utils.models.PseudoOptions.column">column</a></code></li>
 </ul>
 </li>
 </ul>
