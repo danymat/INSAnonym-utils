@@ -57,6 +57,14 @@ class DeleteIdAlgorithm(BaseModel):
     name: Literal[&#39;delete_ids&#39;]
     options: DeleteIdOptions
 
+class DisturbOptions(BaseModel):
+    column: int
+    parameter: float
+
+class DisturbAlgorithm(BaseModel):
+    name: Literal[&#39;disturb&#39;]
+    options: DisturbOptions
+
 class CustomAlgorithm(BaseModel):
     name: str
     options: Optional[dict]
@@ -70,7 +78,12 @@ class FileConfigModel(BaseModel):
     path: DirectoryPath
     columns: List[Column] = Field(..., description= &#34;Columns of submitted file&#34;)
     columns_delimiter: Literal[&#39;\t&#39;, &#39;\n&#39;] = &#39;\t&#39;
-    algorithms: List[Union[DeleteAlgorithm, DeleteIdAlgorithm, CustomAlgorithm]]
+    algorithms: List[Union[
+        DeleteAlgorithm, 
+        DeleteIdAlgorithm, 
+        DisturbAlgorithm, 
+        CustomAlgorithm
+    ]]
     file_type: Literal[&#39;csv&#39;, &#39;json&#39;]
     export: bool = True
     export_rules: Exporter</code></pre>
@@ -283,6 +296,70 @@ class FileConfigModel(BaseModel):
 </dd>
 </dl>
 </dd>
+<dt id="insanonym_utils.models.DisturbAlgorithm"><code class="flex name class">
+<span>class <span class="ident">DisturbAlgorithm</span></span>
+<span>(</span><span>**data: Any)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DisturbAlgorithm(BaseModel):
+    name: Literal[&#39;disturb&#39;]
+    options: DisturbOptions</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>pydantic.main.BaseModel</li>
+<li>pydantic.utils.Representation</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="insanonym_utils.models.DisturbAlgorithm.name"><code class="name">var <span class="ident">name</span> : Literal['disturb']</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="insanonym_utils.models.DisturbAlgorithm.options"><code class="name">var <span class="ident">options</span> : <a title="insanonym_utils.models.DisturbOptions" href="#insanonym_utils.models.DisturbOptions">DisturbOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="insanonym_utils.models.DisturbOptions"><code class="flex name class">
+<span>class <span class="ident">DisturbOptions</span></span>
+<span>(</span><span>**data: Any)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DisturbOptions(BaseModel):
+    column: int
+    parameter: float</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>pydantic.main.BaseModel</li>
+<li>pydantic.utils.Representation</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="insanonym_utils.models.DisturbOptions.column"><code class="name">var <span class="ident">column</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="insanonym_utils.models.DisturbOptions.parameter"><code class="name">var <span class="ident">parameter</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
 <dt id="insanonym_utils.models.Exporter"><code class="flex name class">
 <span>class <span class="ident">Exporter</span></span>
 <span>(</span><span>**data: Any)</span>
@@ -331,7 +408,12 @@ class FileConfigModel(BaseModel):
     path: DirectoryPath
     columns: List[Column] = Field(..., description= &#34;Columns of submitted file&#34;)
     columns_delimiter: Literal[&#39;\t&#39;, &#39;\n&#39;] = &#39;\t&#39;
-    algorithms: List[Union[DeleteAlgorithm, DeleteIdAlgorithm, CustomAlgorithm]]
+    algorithms: List[Union[
+        DeleteAlgorithm, 
+        DeleteIdAlgorithm, 
+        DisturbAlgorithm, 
+        CustomAlgorithm
+    ]]
     file_type: Literal[&#39;csv&#39;, &#39;json&#39;]
     export: bool = True
     export_rules: Exporter</code></pre>
@@ -343,7 +425,7 @@ class FileConfigModel(BaseModel):
 </ul>
 <h3>Class variables</h3>
 <dl>
-<dt id="insanonym_utils.models.FileConfigModel.algorithms"><code class="name">var <span class="ident">algorithms</span> : List[Union[<a title="insanonym_utils.models.DeleteAlgorithm" href="#insanonym_utils.models.DeleteAlgorithm">DeleteAlgorithm</a>, <a title="insanonym_utils.models.DeleteIdAlgorithm" href="#insanonym_utils.models.DeleteIdAlgorithm">DeleteIdAlgorithm</a>, <a title="insanonym_utils.models.CustomAlgorithm" href="#insanonym_utils.models.CustomAlgorithm">CustomAlgorithm</a>]]</code></dt>
+<dt id="insanonym_utils.models.FileConfigModel.algorithms"><code class="name">var <span class="ident">algorithms</span> : List[Union[<a title="insanonym_utils.models.DeleteAlgorithm" href="#insanonym_utils.models.DeleteAlgorithm">DeleteAlgorithm</a>, <a title="insanonym_utils.models.DeleteIdAlgorithm" href="#insanonym_utils.models.DeleteIdAlgorithm">DeleteIdAlgorithm</a>, <a title="insanonym_utils.models.DisturbAlgorithm" href="#insanonym_utils.models.DisturbAlgorithm">DisturbAlgorithm</a>, <a title="insanonym_utils.models.CustomAlgorithm" href="#insanonym_utils.models.CustomAlgorithm">CustomAlgorithm</a>]]</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -466,6 +548,20 @@ class FileConfigModel(BaseModel):
 <ul class="">
 <li><code><a title="insanonym_utils.models.DeleteOptions.alias" href="#insanonym_utils.models.DeleteOptions.alias">alias</a></code></li>
 <li><code><a title="insanonym_utils.models.DeleteOptions.columns" href="#insanonym_utils.models.DeleteOptions.columns">columns</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="insanonym_utils.models.DisturbAlgorithm" href="#insanonym_utils.models.DisturbAlgorithm">DisturbAlgorithm</a></code></h4>
+<ul class="">
+<li><code><a title="insanonym_utils.models.DisturbAlgorithm.name" href="#insanonym_utils.models.DisturbAlgorithm.name">name</a></code></li>
+<li><code><a title="insanonym_utils.models.DisturbAlgorithm.options" href="#insanonym_utils.models.DisturbAlgorithm.options">options</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="insanonym_utils.models.DisturbOptions" href="#insanonym_utils.models.DisturbOptions">DisturbOptions</a></code></h4>
+<ul class="">
+<li><code><a title="insanonym_utils.models.DisturbOptions.column" href="#insanonym_utils.models.DisturbOptions.column">column</a></code></li>
+<li><code><a title="insanonym_utils.models.DisturbOptions.parameter" href="#insanonym_utils.models.DisturbOptions.parameter">parameter</a></code></li>
 </ul>
 </li>
 <li>
