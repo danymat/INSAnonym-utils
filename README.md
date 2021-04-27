@@ -4,7 +4,7 @@ INSA'nonym-utils is a python library capable of doing operations on a table.
 At the moment, it is capable of:
 
 - Creating a DataFrame from the table.
-- Execute multiple algororithms on the table.
+- Execute multiple algorithms on the table.
 - Execute algorithms created by the user.
 - Export the resulting Dataframe with the specified format.
 
