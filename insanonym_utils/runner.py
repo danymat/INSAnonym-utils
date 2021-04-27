@@ -1,7 +1,8 @@
 from os import path
+from typing import List
 from pandas import read_json, read_csv
 from pandas.core.frame import DataFrame
-from .models import FileConfigModel, FileModel, CustomAlgorithm
+from .models import Column, FileConfigModel, FileModel, CustomAlgorithm
 from .algorithms import *
 import importlib
 
@@ -26,12 +27,21 @@ class Runner:
         elif model.file_type == 'csv':
             self.dataframe = read_csv(filepath_or_buffer=_file.path, sep=model.columns_delimiter)
         self.dataframe.columns = column_names
+        self._typeChecking(model.columns)
 
     def _verifyRows(self, file):
         with open(file, 'r') as csv:
             first_line = csv.readline()
         if first_line.count(self.model.columns_delimiter) + 1 != len(self.model.columns):
             raise Exception('Number of columns differ')
+
+    def _typeChecking(self, columns: List[Column]):
+        for column in columns:
+            if column.column_type == "datetime64[ns]":
+                self.dataframe[column.name] = self.dataframe[column.name].astype(column.column_type)
+            type = self.dataframe[column.name].dtype
+            if type != column.column_type:
+                raise Exception(f"Error in column types: column {column.name} if of type {type}, not {column.column_type}")
 
     def _verifyColumnsInAlgorithms(self, algorithms, column_names):
         for algo in algorithms:
