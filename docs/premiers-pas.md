@@ -1,8 +1,8 @@
-# Premiers pas
+# First steps
 
-Pour utiliser le script il vous faudra un fichier de configuration, intitulé `parser.cfg`.
+To use the library you will need a configuration file, called `parser.cfg`.
 
-Voici un exemple de fichier de configuration:
+This is an example:
 
 ```json
 {
@@ -26,110 +26,111 @@ Voici un exemple de fichier de configuration:
 }
 ```
 
-Ce fichier va lire la table `dataset1.csv` dans le répertoire courant, contenant 4 colonnes, et va appliquer l'algorithme de pseudo-anonymisation sur les colonnes 1 et 2, soit sur `date` et `latitude` respectivement.
+This configuration file will be used to read `dataset1.csv` in the current directory.
+It will apply the delete algorithm on the columns `id` and `longitude`.
 
-- `"name"` - le nom de la table à anonymiser
-- `"path"` - le répertoire de la table à anonymiser
-- `"columns"`- un ensemble de colonne, où chaque colonne doit avoir les champs:
-  - `"name"` - le nom de la colonne
-  - `"column_type"` - le type de la colonne (`int`, `float`, `datetime64[ns]`)
-- `"algorithms"` - un ensemble d'algorithmes (aller à la section [Algorithmes](https://github.com/danymat/INSAnonym-utils/blob/main/docs/algorithmes.md) pour plus de détails)
-- `"file_type"` - le type de fichier de la table à anonymiser (`csv`,`json`)
-- `"export"` - (Optionnel, défaut: True) exporte la table résultante (`False`, `True`)
-- `"export_rules"` - réglages d'exportation de la table:
-  - `"output_name"` - le nom de sortie de la table exportée
-  - `"output_format"` - le format d'exportation de la table (`csv`,`json`)
+- `"name"` - the name of the dataset
+- `"path"` - the location of the dataset
+- `"columns"`- a list of column, where each column has to be:
+  - `"name"` - column name
+  - `"column_type"` - type of column (`int`, `float`, `datetime64[ns]`)
+- `"algorithms"` - a list of algorithms (see the section [Algorithmes](https://github.com/danymat/INSAnonym-utils/blob/main/docs/algorithmes.md) for more details)
+- `"file_type"` - filetype of the table (`csv`,`json`)
+- `"export"` - (Optional, default: True) export the resulting table (`False`, `True`)
+- `"export_rules"` - exporting rules:
+  - `"output_name"` - output name of the resulting dataframe
+  - `"output_format"` - format of the exported dataframe (`csv`,`json`)
 
-_Note: toutes les commandes suivantes seront effectuées dans l'interpreteur python:_
+_Note: All the following commands are used in a python shell:_
 
-1. Créer un fichier de configuration simple, intitulé `parser.cfg`.
+1. Create a simple configuration file, called `parser.cfg`.
 
-Vous pouvez utiliser la commande `sample()` pour générer un fichier basique:
+You can use the command `sample()` to generate a basic config file:
 
 ```python
 from insanonym_utils import utils
 utils.sample()
 ```
 
-Le fichier sera généré dans votre répertoire courant et intitulé `parser.cfg`.
+The generated file will be in your current directory and called `parser.cfg`.
 
-Vous pouvez ensuite le modifier pour refléter votre table.
+You can now change the configuration to reflect your table.
 
-2. Nous allons ensuite lire le fichier de configuration
+2. We will now use the configuration file to create a model
 
 ```python
 from insanonym_utils import models
 model = models.FileConfigModel.parse_file('parser.cfg')
-# Vous pouvez aussi spécifier un chemin absolu pour votre fichier de configuration:
+# You can also specify a full path to your configuration file
 # e.g models.FileConfigModel.parse_file('path/to/file/parser.cfg')
 ```
 
-3. Nous allons ensuite utiliser ce fichier de configuration pour charger la table en mémoire:
+3. We will now use the model to read the table as a DataFrame:
 
 ```python
 from insanonym_utils import runner
 r = runner.Runner(model)
 ```
 
-La base de données est maintenant chargée en mémoire. vous pouvez la visualiser en effectuant la commande:
+The dataframe is now in memory, you can visualize it with the command:
 
 ```python
 print(r.dataframe)
 ```
 
-4. La Dataframe ayant fini de charger, nous pouvons executer les algorithmes spécifiés dans le fichier de configuration:
+4. The dataframe now operational, we can execute the specified algorithms in the configuration file:
 
 ```python
 r.execute()
 ```
 
-La dataframe résultant sera accessible par:
+The resulting dataframe will be accessible with:
 
 ```python
 print(r.dataframe)
 ```
 
-Par défaut, `r.execute()` enregistre la table résultante avec le nom spécifié dans le fichier de configuration.
-Passer `"export": "False"` dans le fichier de configuration va prévenir la sauvegarde automatique.
+NBy default, `r.execute()` will save the table with the specified parameters in the configuration file.
+If you specified `"export": "False"` in the configuration file, it will prevent the save.
 
-Si toutefois vous voulez enregistrer la table résultante, vous pouvez le faire grâce au runner:
+If afterwards you want to save the resulting dataframe, you can do it:
 
 ```python
 r.save()
 ```
 
-## Multiples runners
+## Multiple runners
 
-Si vous avez besoin de faire tourner plusieurs algorithmes indépendamment les uns des autres, vous pouvez le faire.
-Il vous suffit alors de créer un autre modèle prenant un autre fichier de configuration, tel que:
+Id you need to run multiple algorithms independtly from each others, you can do it.
+You just need to create multiple models with different config files, for example:
 
 ```python
 model2 = models.FileConfigModel.parse_file('new_config_file.cfg')
 ```
 
-Et ainsi créer un deuxieme runner:
+In order to create a second runner
 
 ```python
 r2 = runner.Runner(model2)
 ```
 
-A noter toutefois qu'une deuxième Dataframe sera créée, donc cela peut s'avérer lourd si votre machine ne le supporte pas.
+Please note that a second dataframe will be create, it can be heavy if your computer doesn't support it.
 
-## Considérations
+## Considerations
 
-Nous vous proposons d'effectuer des tests sur des versions tronquées de votre table initiale, si sa taille originale est grande.
+We advise you to run your test in truncated versions of your full table. 
 
-Pour information, voici le temps de calcul de chaque étape du cycle sur un fichier de `1.7Go` (plus de `34 millions` de lignes):
+For information, this is the time spend on each stage on a file of `1.7G` (more than `34 million` lines):
 
-- Creation du runner (ouverture de la table en dataframe): `42.08s`.
-- Execution de l'algorithme `delete` sur une colonne: `1.83s`(Voir la section [algorithmes](algorithmes.md#delete) pour plus de détails).
-- Enregistrement de la table résultante: `1m.47s` (Format de sortie: csv)
+- Runner creation (opening dataframe): `42.08s`.
+- Execution of algorithm `delete` over a column: `1.83s`(See the section [algorithms](algorithmes.md#delete) for more details).
+- Saving resulting dataframe: `1m.47s` (Output format: csv).
 
-Pour pouvoir executer les opérations aussi rapidement, pandas a du mettre en RAM toute la table.
+To execute as quickly the operations, pandas did put the all table in ram.
 
-Assurez vous d'avoir une bonne configuration (au moins 8Go de RAM).
+Be careful to have a good configuration (minimum 8Gb RAM).
 
-(Les tests ont été effectués sur une machine personnelle, donc les specs sont ci-dessous)
+(The tests have been carried out on a personal computer, with the specs following)
 
 ```
 OS: macOS 11.3 20E5217a x86_64

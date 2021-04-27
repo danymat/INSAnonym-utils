@@ -1,29 +1,27 @@
 ![](https://raw.githubusercontent.com/danymat/INSAnonym-utils/main/.images/INSA-3.png)
 
-## Qu'est-ce que insanonym-utils?
+## Whats is INSA'nonym-utils?
 
-Insanonym-utils est une librarie python créée pour faciliter l'anonymisation de tables. 
-Ce projet utilise la librarie pandas pour créer des dataframes et ainsi gagner en rapidité.
+INSA'nonym-utils is a python library created to ease tables anonymization.
+This project use pandas library to create Dataframes in order to be more efficient.
 
-## Pourquoi ?
+## Why ?
 
-De nombreuses implémentations peuvent exister pour anonymiser un algorithme, mais par expérience, elles ne sont pas toutes optimales.
+Numerous implementations can exist to anonymize an algorithm, but by expereience, they are not ideal solutions.
 
-Certaines implémentations effectuent le processus d'anonymisation ligne par ligne.
+Certain implementations operate line by line.
 
-D'autres utilisent des Dataframes, mais n'utilisent pas les méthodes qui permettent d'effectuer des opérations rapidement ([comparatif](https://engineering.upside.com/a-beginners-guide-to-optimizing-pandas-code-for-speed-c09ef2c6a4d6)).
+Others use Dataframes, but doesn't use methods that can accelerate calculus ([comparative](https://engineering.upside.com/a-beginners-guide-to-optimizing-pandas-code-for-speed-c09ef2c6a4d6)).
 
-### A noter
+### Warning
 
-Attention toutefois: cette librairie ne dispose que de quelques algorithmes simples, et peu efficaces. Le but de la librarie est seulement de faciliter l'écriture, et le traitement des algorithmes sur un dataframe.
+This library only has a few simple algorithms, and they are not very efficient in anonymization.
+The aim of the library is to ease writing and processing algorithms on a dataframe.
 
 ## Documentation
 
-### Premiers pas
+### First steps
 
-- Pour comprendre le fonctionnement de la librairie, veuillez vous référer aux [premiers pas](https://github.com/danymat/INSAnonym-utils/blob/main/docs/premiers-pas.md).
-- Pour connaitre les algorithmes fournis par la librairie, consulter la section [Algorithmes](https://github.com/danymat/INSAnonym-utils/blob/main/docs/algorithmes.md).
-- Pour apprendre à créer ses propres algorithmes, consulter la section [Création d'Algorithmes](https://github.com/danymat/INSAnonym-utils/blob/main/docs/creation-algorithmes.md).
-
-
-
+- [First steps](https://github.com/danymat/INSAnonym-utils/blob/main/docs/premiers-pas.md)
+- In order to know more about pre-defined algorithms, please see [Algorithms](https://github.com/danymat/INSAnonym-utils/blob/main/docs/algorithmes.md).
+- In order to understand how to create your own algorithm, please see [Algorithms Creation](https://github.com/danymat/INSAnonym-utils/blob/main/docs/creation-algorithmes.md).
