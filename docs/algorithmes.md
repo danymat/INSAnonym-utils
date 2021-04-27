@@ -1,17 +1,17 @@
-# Algorithmes
+# Algorithms
 
-## Liste des algorithmes fournis
+## List of provided algorithms
 
 - [Delete](#delete)
 - [Delete IDs](#delete_ids)
 - [Disturb](#disturb)
 - [Pseudo](#pseudo)
 
-Note: la documentation de l'implémentation des algorithmes se trouve [ici](https://danymat.github.io/INSAnonym-utils/algorithms.html).
+Note: detailed documentation and source code can be visited [here](https://danymat.github.io/INSAnonym-utils/algorithms.html).
 
 ## Schema
 
-Tous les algorithmes doivent être sous la forme:
+All algorithms have to be specified in your config file with the following format:
 
 ```json
 ...
@@ -24,19 +24,19 @@ Tous les algorithmes doivent être sous la forme:
 ...
 ```
 
-Avec: 
-- `name` le nom de l'algorithme
-- `options` un object d'options
+With: 
+- `name` algorithm name
+- `options` an options object
 
-*Note: les algorithmes s'exécutent suivant leur ordre dans le fichier de configuration*
+*Note: All algorithms are executed in the order of appearance in the config file*
 
 ## Delete
 
-### Résumé
+### Summary
 
-Delete remplace toutes les valeurs des colonnes spécifiées par un texte de remplacement.
+Delete replaces all values in specified column 
 
-### Fichier de configuration
+### Configuration file
 
 ```json
 ...
@@ -52,17 +52,17 @@ Delete remplace toutes les valeurs des colonnes spécifiées par un texte de rem
 ...
 ```
 
-- `"delete"` le nom de l'algorithme
-- `"columns"` une liste de noms de colonnes à supprimer
-- `"alias"` (Optionnel, defaut: `Nan`) le texte de remplacement
+- `"delete"` algorithm name
+- `"columns"` list of columns to delete
+- `"alias"` (Optional, default: `NaN`) replacement text
 
 ## Delete_Ids
 
-### Résumé
+### Summary
 
-Remplace tous les ID spécifiés par un alias
+Replace all specified IDs by an alias
 
-### Fichier de configuration
+### Configuration file
 
 ```json
 ...
@@ -79,19 +79,19 @@ Remplace tous les ID spécifiés par un alias
 ...
 ```
 
-- `"delete_ids"` le nom de l'algorithme
-- `"column"` le nom de la colonne des identifiants
-- `"ids"` une liste d'identifiants à supprimer
-- `"alias"` (Optionnel, defaut: `"DEL"`) le texte de remplacement
+- `"delete_ids"` algorithm name
+- `"column"` algorithm name to delete ids
+- `"ids"` a list of ids to delete
+- `"alias"` (Optional, default: `DEL`) replacement text
 
 ## Disturb
 
-### Résumé
+### Summary
 
-Ajoute une perturbation [-parameter,+parameter] sur une colonne de la table.
-Cet algorithme utilise la loi uniforme pour effectuer la perturbation.
+Add a disruption [-parameter,+parameter] over a column.
+This algorithm use uniform law to do disruption.
 
-### Fichier de configuration
+### Configuration file
 
 ```json
 ...
@@ -107,17 +107,17 @@ Cet algorithme utilise la loi uniforme pour effectuer la perturbation.
 ...
 ```
 
-- `"disturb"` le nom de l'algorithme
-- `"column"` le nom de la colonne à perturber
-- `"parameter"` le paramètre de perturbation (loi uniforme)
+- `"disturb"` algorithm name
+- `"column"` column name to disturb
+- `"parameter"` parameter of disruption (uniform law)
 
 ## Pseudo
 
-### Résumé
+### Summary
 
-Effectue une pseudo-anonymisation sur les valeurs d'une colonne.
+Does a pseudo-anonymization over values in a column.
 
-### Fichier de configuration
+### Configuration file
 
 ```json
 ...
@@ -132,5 +132,5 @@ Effectue une pseudo-anonymisation sur les valeurs d'une colonne.
 ...
 ```
 
-- `"disturb"` le nom de l'algorithme
-- `"column"` le nom de la colonne à perturber
+- `"disturb"` algorithm name
+- `"column"` column name to execute pseudo-anonymization

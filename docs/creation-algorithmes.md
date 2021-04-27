@@ -1,22 +1,20 @@
-# Création d'algorithmes
+# Algorithm creation
 
-Pour créer un algorithmes, il vous faudra 2 étapes:
+You can create an algorithm in 2 steps:
 
-1. Créer un script d'algorithme
-2. L'appeler dans le fichier de configuration
+1. Create a script
+2. Call in it the configuration file
 
-## Création d'un script
+## Script creation
 
-Le script appelé doit être un simple fichier python, placé au même répertoire que le fichier de configuration.
+The script created must be a simple python file, in the same directory as the configuration file.
 
-(Si il est placé dans un dossier, ce dernier doit être placé dans le répertoire du fichier de configuration.)
+For documentation purposes, we will call it `custom_algorithm`.
 
-Pour la documentation, nous allons l'appeler `custom_algorithm.py`.
+The structure is the following:
 
-Sa structure est la suivante:
-
-- Il doit être composé d'une fonction main
-- l'architecture de la fonction doit être: 
+- Has to contain a main function
+- The architecture has to be the following:
 
 ```python
 def main(df, options):
@@ -25,19 +23,19 @@ def main(df, options):
     return df
 ```
 
-- `df` est le [Dataframe](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas-dataframe) de la table utilisée .
+- `df` is the [Dataframe](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas-dataframe) of the table used.
 
-Vous pouvez alors utiliser toutes les transformations pandas sur le dataframe. Nous fournirons une liste de transformations types à utiliser pour votre algorithme 
+You can now use all pandas transformations on the dataframe. We will provide you a list of common transformations to use, but you can now explore our algorithms [here](https://danymat.github.io/INSAnonym-utils/algorithms.html).
 
-- `options` est un dictionnaire de paramètres que vous choisissez. Vous pourrez ainsi spécifier les paramètres dans le fichier de configuration.
+- `options` is a dictionnary of custom parameters you choose.
 
-Par exemple:
+You can specify parameters in the configuration file. For example:
 
 ```python
 print(options['group_by']) 
 ```
 
-Pourra être spécifié dans le fichier de configuration par:
+Can be specified in the configuration file by:
 
 ```json
     { 
@@ -46,12 +44,9 @@ Pourra être spécifié dans le fichier de configuration par:
     }
 ```
 
-## Appel du script dans le fichier de configuration
+## Calling the script in the configuration file
 
-Rien de plus simple.
-Il suit la même syntaxe que les autres algorithmes (se referer [ici](algorithmes.md))
-
-Le nom devra être le nom du script, soit dans le cas de l'exemple ci dessus:
+The name has to be the script filename, in our case from the exemple above:
 
 ```json
 ...
@@ -64,11 +59,10 @@ Le nom devra être le nom du script, soit dans le cas de l'exemple ci dessus:
 ...
 ```
 
-## Exemple de script
+## Script example
 
-Voici un exemple de script pour montrer l'implémentation type d'un fichier.
-Nous l'intitulerons `example.py`
-
+This is an example of script and how we call it in the configuration file.
+We will call it `example.py`
 
 ```python
 def main(df, options):
@@ -80,7 +74,7 @@ def main(df, options):
     return df
 ```
 
-Son appel dans le fichier de configuration sera tel que ceci:
+Its call in thz configuration file will be the following:
 
 ```json
 ...
@@ -93,7 +87,7 @@ Son appel dans le fichier de configuration sera tel que ceci:
 ...
 ```
 
-Appliquons l'algorithme sur le dataframe suivant:
+If we apply the script over the dataframe below:
 
 ```
      id                 date  latitude  longitude
@@ -110,7 +104,7 @@ Appliquons l'algorithme sur le dataframe suivant:
 498   1  2015-03-04 01:03:35  0.350427   0.936959
 ```
 
-Le Dataframe résultant sera alors:
+The resulting dataframe will be:
 
 ```
      id                 date  latitude  longitude

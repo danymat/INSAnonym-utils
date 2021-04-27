@@ -1,48 +1,50 @@
 ![](.images/INSA-3.png)
 
-INS'Anonym-utils dispose d'une librarie capable d'effectuer des opérations sur une table, dans le but de l'anonymiser.
+INSA'nonym-utils is a python library capable of doing operations on a table.
+At the moment, it is capable of:
 
-Pour l'instant, elle est capable de:
-
-- Créer un dataframe à partir de la table.
-- Effectuer plusieurs algorithmes simples sur la table en question
-- Executer des algorithmes créés par l'utilisateur
-- Exporter la dataframe au format choisi.
+- Creating a DataFrame from the table.
+- Execute multiple algororithms on the table.
+- Execute algorithms created by the user.
+- Export the resulting Dataframe with the specified format.
 
 ## Installation
 
-L'installation est compatible sur la version `3.8` et `3.9` de python.
+Installation is compatible with python versions `3.8` and `3.9`.
 
 ```bash
 pip install insanonym-utils
 ```
 
-Pour mettre à jour à la version la plus récente:
+In order to upgrade to latest version:
+
 ```bash
 pip install insanonym-utils --upgrade
 ```
-Les notes de mise à jour sont dans l'onglet [Releases](https://github.com/danymat/INSAnonym-utils/releases) de Github.
+
+Version informations are in the github [Releases](https://github.com/danymat/INSAnonym-utils/releases).
 
 ## Documentation
 
-- [Premiers pas](https://github.com/danymat/INSAnonym-utils/blob/main/docs/premiers-pas.md)
-- Pour connaitre les algorithmes fournis par la librairie, consulter la section [Algorithmes](docs/algorithmes.md).
-- Pour comprendre comment ajouter son propre algorithme, consulter la section [Création d'algorithmes](docs/creation-algorithmes.md).
-- Pour voir la documentation détaillée du code source, consulter le site [INSAnonym-utils](https://danymat.github.io/INSAnonym-utils).
+- [First steps](https://github.com/danymat/INSAnonym-utils/blob/main/docs/premiers-pas.md)
+- In order to know more about pre-defined algorithms, please see [Algorithms](docs/algorithmes.md).
+- In order to understand how to create your own algorithm, please see [Algorithms Creation](docs/creation-algorithmes.md).
+- In order to see source code documentation, please follow the docs [INSAnonym-utils](https://danymat.github.io/INSAnonym-utils).
 
 ## Development
 
-Prérequis:
+Prerequisites:
 
 - [Poetry](https://python-poetry.org/docs/#installation)
 
 ```
 git clone https://github.com/danymat/INSAnonym-utils.git
 cd INSAnonym-utils
-poetry install 
+poetry install
 ```
 
 Run the tests:
+
 ```bash
 cd tests
 poetry run pytest
@@ -50,4 +52,4 @@ poetry run pytest
 
 ## Roadmap
 
-La roadmap se situe ici: [Roadmap](https://github.com/danymat/INSAnonym-utils/projects/1).
+[Roadmap](https://github.com/danymat/INSAnonym-utils/projects/1).
