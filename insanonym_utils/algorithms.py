@@ -12,8 +12,8 @@ def delete(df, options):
 
     Other Parameters
     ----------------
-        options.columns: list of int
-           Column indexes to apply algorithm
+        options.columns: list of string
+           Column names to apply algorithm
         options.alias: str, default=Nan
             String value to replace affected lines
     Returns
@@ -21,8 +21,10 @@ def delete(df, options):
     df: Dataframe
         The modified dataframe
     """
+    # for col in options.columns:
+        # if col 
     for col in options.columns:
-        df.iloc[:, col] = options.alias
+        df.loc[:, col] = options.alias
     return df
 
 def delete_ids(df, options):
@@ -36,8 +38,8 @@ def delete_ids(df, options):
 
     Other Parameters
     ----------------
-        options.column: int
-           Column index to apply algorithm
+        options.column: string
+           Column name to apply algorithm
         options.ids: list of int
             IDs to delete
         options.alias: str, default='DEL'
@@ -48,7 +50,7 @@ def delete_ids(df, options):
     df: Dataframe
         The modified dataframe
     """
-    df.iloc[:,options.column] = df.iloc[:,options.column].replace(options.ids, options.alias)
+    df.loc[:,options.column] = df.loc[:,options.column].replace(options.ids, options.alias)
     return df
 
 def disturb(df, options):
@@ -62,8 +64,8 @@ def disturb(df, options):
 
     Other Parameters
     ----------------
-        options.column: int
-           Column index to apply algorithm
+        options.column: string
+           Column name to apply algorithm
         options.parameter: float
             uniform parameter
 
@@ -72,7 +74,7 @@ def disturb(df, options):
     df: Dataframe
         The modified dataframe
     """
-    df.iloc[:,options.column] = df.iloc[:,options.column].apply( lambda x: x+np.random.uniform(options.parameter) )
+    df.loc[:,options.column] = df.loc[:,options.column].apply( lambda x: x+np.random.uniform(options.parameter) )
     return df
 
 def pseudo(df, options):
@@ -86,8 +88,8 @@ def pseudo(df, options):
 
     Other Parameters
     ----------------
-        options.column: int
-           Column index to apply algorithm
+        options.column: string
+           Column name to apply algorithm
 
     Returns
     -------
@@ -96,7 +98,7 @@ def pseudo(df, options):
     """
     # find all unique ids and create random unique values with size len(ids)+1000
     # Example: if you have ids=[3,5,7], you can generate randomized=[1006,242,938]
-    ids = pd.unique( df.iloc[:,options.column] )
+    ids = pd.unique( df.loc[:,options.column] )
     randomized = np.random.choice(len(ids)+1000,size=len(ids), replace=False)
     # replace all ids by randomized values
-    df.iloc[:,options.column] = df.iloc[:,options.column].replace(ids, randomized)
+    df.loc[:,options.column] = df.loc[:,options.column].replace(ids, randomized)
