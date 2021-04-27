@@ -1,9 +1,10 @@
 import numpy as np
+import pandas as pd
 
 def delete(df, options):
     """
     Delete algorithm that replace all values in a column by an alias.
-    
+
     Parameters
     ----------
     **options: dict
@@ -52,7 +53,7 @@ def delete_ids(df, options):
 
 def disturb(df, options):
     """
-    Disturb given integer or float typed column with an uniform distribution with parameter p 
+    Disturb given integer or float typed column with an uniform distribution with parameter p
 
     Parameters
     ----------
@@ -95,7 +96,7 @@ def pseudo(df, options):
     """
     # find all unique ids and create random unique values with size len(ids)+1000
     # Example: if you have ids=[3,5,7], you can generate randomized=[1006,242,938]
-    ids = pd.unique( r.dataframe.iloc[:,options.column] )
+    ids = pd.unique( df.iloc[:,options.column] )
     randomized = np.random.choice(len(ids)+1000,size=len(ids), replace=False)
     # replace all ids by randomized values
     df.iloc[:,options.column] = df.iloc[:,options.column].replace(ids, randomized)
