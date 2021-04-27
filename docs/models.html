@@ -33,7 +33,7 @@ from pydantic import BaseModel, DirectoryPath, FilePath, Field
 
 class Column(BaseModel):
     name: str
-    column_type: Literal[&#39;int&#39;, &#39;str&#39;, &#39;datetime&#39;, &#39;float&#39;]
+    column_type: Literal[&#39;int&#39;, &#39;str&#39;, &#39;datetime64[ns]&#39;, &#39;float&#39;]
     #column_type: str
 
 class FileModel(BaseModel):
@@ -119,7 +119,7 @@ class FileConfigModel(BaseModel):
 </summary>
 <pre><code class="python">class Column(BaseModel):
     name: str
-    column_type: Literal[&#39;int&#39;, &#39;str&#39;, &#39;datetime&#39;, &#39;float&#39;]
+    column_type: Literal[&#39;int&#39;, &#39;str&#39;, &#39;datetime64[ns]&#39;, &#39;float&#39;]
     #column_type: str</code></pre>
 </details>
 <h3>Ancestors</h3>
@@ -129,7 +129,7 @@ class FileConfigModel(BaseModel):
 </ul>
 <h3>Class variables</h3>
 <dl>
-<dt id="insanonym_utils.models.Column.column_type"><code class="name">var <span class="ident">column_type</span> : Literal['int', 'str', 'datetime', 'float']</code></dt>
+<dt id="insanonym_utils.models.Column.column_type"><code class="name">var <span class="ident">column_type</span> : Literal['int', 'str', 'datetime64[ns]', 'float']</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>

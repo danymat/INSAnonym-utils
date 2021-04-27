@@ -6,23 +6,23 @@ Voici un exemple de fichier de configuration:
 
 ```json
 {
-    "name": "dataset1.csv",
-    "path": ".",
-    "columns": [
-        {"name": "id", "column_type":"int" },
-        {"name": "date", "column_type":"int" },
-        {"name": "latitude", "column_type":"int" },
-        {"name": "longitude", "column_type":"int" }
-    ],
-    "algorithms": [
-        { "name": "delete", "options": { "columns": ["id", "longitude"] } }
-    ],
-    "file_type": "csv",
-    "export": "False",
-    "export_rules": {
-        "output_name": "output_df",
-        "output_format": "csv"
-    }
+  "name": "dataset1.csv",
+  "path": ".",
+  "columns": [
+    { "name": "id", "column_type": "int" },
+    { "name": "date", "column_type": "int" },
+    { "name": "latitude", "column_type": "int" },
+    { "name": "longitude", "column_type": "int" }
+  ],
+  "algorithms": [
+    { "name": "delete", "options": { "columns": ["id", "longitude"] } }
+  ],
+  "file_type": "csv",
+  "export": "False",
+  "export_rules": {
+    "output_name": "output_df",
+    "output_format": "csv"
+  }
 }
 ```
 
@@ -31,16 +31,16 @@ Ce fichier va lire la table `dataset1.csv` dans le répertoire courant, contenan
 - `"name"` - le nom de la table à anonymiser
 - `"path"` - le répertoire de la table à anonymiser
 - `"columns"`- un ensemble de colonne, où chaque colonne doit avoir les champs:
-    - `"name"` - le nom de la colonne
-    - `"column_type"` - le type de la colonne 
-- `"algorithms"` - un ensemble d'algorithmes (aller à la section Algorithmes pour plus de détails)
+  - `"name"` - le nom de la colonne
+  - `"column_type"` - le type de la colonne (`int`, `float`, `datetime64[ns]`)
+- `"algorithms"` - un ensemble d'algorithmes (aller à la section [Algorithmes](https://github.com/danymat/INSAnonym-utils/blob/main/docs/algorithmes.md) pour plus de détails)
 - `"file_type"` - le type de fichier de la table à anonymiser (`csv`,`json`)
 - `"export"` - (Optionnel, défaut: True) exporte la table résultante (`False`, `True`)
 - `"export_rules"` - réglages d'exportation de la table:
-    - `"output_name"` - le nom de sortie de la table exportée
-    - `"output_format"` - le format d'exportation de la table (`csv`,`json`)
+  - `"output_name"` - le nom de sortie de la table exportée
+  - `"output_format"` - le format d'exportation de la table (`csv`,`json`)
 
-*Note: toutes les commandes suivantes seront effectuées dans l'interpreteur python:*
+_Note: toutes les commandes suivantes seront effectuées dans l'interpreteur python:_
 
 1. Créer un fichier de configuration simple, intitulé `parser.cfg`.
 
@@ -51,7 +51,7 @@ from insanonym_utils import utils
 utils.sample()
 ```
 
-Le fichier sera généré dans votre répertoire courant et intitulé `parser.cfg`. 
+Le fichier sera généré dans votre répertoire courant et intitulé `parser.cfg`.
 
 Vous pouvez ensuite le modifier pour refléter votre table.
 
@@ -59,8 +59,8 @@ Vous pouvez ensuite le modifier pour refléter votre table.
 
 ```python
 from insanonym_utils import models
-model = models.FileConfigModel.parse_file('parser.cfg') 
-# Vous pouvez aussi spécifier un chemin absolu pour votre fichier de configuration: 
+model = models.FileConfigModel.parse_file('parser.cfg')
+# Vous pouvez aussi spécifier un chemin absolu pour votre fichier de configuration:
 # e.g models.FileConfigModel.parse_file('path/to/file/parser.cfg')
 ```
 
@@ -84,6 +84,7 @@ r.execute()
 ```
 
 La dataframe résultant sera accessible par:
+
 ```python
 print(r.dataframe)
 ```
@@ -103,7 +104,7 @@ Si vous avez besoin de faire tourner plusieurs algorithmes indépendamment les u
 Il vous suffit alors de créer un autre modèle prenant un autre fichier de configuration, tel que:
 
 ```python
-model2 = models.FileConfigModel.parse_file('new_config_file.cfg') 
+model2 = models.FileConfigModel.parse_file('new_config_file.cfg')
 ```
 
 Et ainsi créer un deuxieme runner:
@@ -124,7 +125,7 @@ Pour information, voici le temps de calcul de chaque étape du cycle sur un fich
 - Execution de l'algorithme `delete` sur une colonne: `1.83s`(Voir la section [algorithmes](algorithmes.md#delete) pour plus de détails).
 - Enregistrement de la table résultante: `1m.47s` (Format de sortie: csv)
 
-Pour pouvoir executer les opérations aussi rapidement, pandas a du mettre en RAM toute la table. 
+Pour pouvoir executer les opérations aussi rapidement, pandas a du mettre en RAM toute la table.
 
 Assurez vous d'avoir une bonne configuration (au moins 8Go de RAM).
 
@@ -136,4 +137,3 @@ CPU: Intel i5-7360U (4) @ 2.30GHz
 GPU: Intel Iris Plus Graphics 640
 Memory: 8192MiB
 ```
-
