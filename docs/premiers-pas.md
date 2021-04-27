@@ -15,7 +15,7 @@ Voici un exemple de fichier de configuration:
         {"name": "longitude", "column_type":"int" }
     ],
     "algorithms": [
-        { "name": "delete", "options": { "columns": [1,2] } }
+        { "name": "delete", "options": { "columns": ["id", "longitude"] } }
     ],
     "file_type": "csv",
     "export": "False",

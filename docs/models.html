@@ -33,15 +33,15 @@ from pydantic import BaseModel, DirectoryPath, FilePath, Field
 
 class Column(BaseModel):
     name: str
-    # column_type: Literal[&#39;int&#39;, &#39;str&#39;, &#39;datetime&#39;] 
-    column_type: str
-    
+    column_type: Literal[&#39;int&#39;, &#39;str&#39;, &#39;datetime&#39;, &#39;float&#39;]
+    #column_type: str
+
 class FileModel(BaseModel):
     name: str
     path: FilePath
 
 class DeleteOptions(BaseModel):
-    columns: List[int]
+    columns: List[str]
     alias: str = NaN
 
 class DeleteAlgorithm(BaseModel):
@@ -49,7 +49,7 @@ class DeleteAlgorithm(BaseModel):
     options: DeleteOptions
 
 class DeleteIdOptions(BaseModel):
-    column: int
+    column: str
     ids: List[int]
     alias: str = &#39;DEL&#39;
 
@@ -58,7 +58,7 @@ class DeleteIdAlgorithm(BaseModel):
     options: DeleteIdOptions
 
 class DisturbOptions(BaseModel):
-    column: int
+    column: str
     parameter: float
 
 class DisturbAlgorithm(BaseModel):
@@ -66,7 +66,7 @@ class DisturbAlgorithm(BaseModel):
     options: DisturbOptions
 
 class PseudoOptions(BaseModel):
-    column: int
+    column: str
 
 class PseudoAlgorithm(BaseModel):
     name: Literal[&#39;pseudo&#39;]
@@ -79,15 +79,15 @@ class CustomAlgorithm(BaseModel):
 class Exporter(BaseModel):
     output_name: str
     output_format: Literal[&#39;csv&#39;, &#39;json&#39;]
-    
+
 class FileConfigModel(BaseModel):
     name: str
     path: DirectoryPath
     columns: List[Column] = Field(..., description= &#34;Columns of submitted file&#34;)
     columns_delimiter: Literal[&#39;\t&#39;, &#39;\n&#39;] = &#39;\t&#39;
     algorithms: List[Union[
-        DeleteAlgorithm, 
-        DeleteIdAlgorithm, 
+        DeleteAlgorithm,
+        DeleteIdAlgorithm,
         DisturbAlgorithm, 
         PseudoAlgorithm,
         CustomAlgorithm
@@ -119,8 +119,8 @@ class FileConfigModel(BaseModel):
 </summary>
 <pre><code class="python">class Column(BaseModel):
     name: str
-    # column_type: Literal[&#39;int&#39;, &#39;str&#39;, &#39;datetime&#39;] 
-    column_type: str</code></pre>
+    column_type: Literal[&#39;int&#39;, &#39;str&#39;, &#39;datetime&#39;, &#39;float&#39;]
+    #column_type: str</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -129,7 +129,7 @@ class FileConfigModel(BaseModel):
 </ul>
 <h3>Class variables</h3>
 <dl>
-<dt id="insanonym_utils.models.Column.column_type"><code class="name">var <span class="ident">column_type</span> : str</code></dt>
+<dt id="insanonym_utils.models.Column.column_type"><code class="name">var <span class="ident">column_type</span> : Literal['int', 'str', 'datetime', 'float']</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -247,7 +247,7 @@ class FileConfigModel(BaseModel):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class DeleteIdOptions(BaseModel):
-    column: int
+    column: str
     ids: List[int]
     alias: str = &#39;DEL&#39;</code></pre>
 </details>
@@ -262,7 +262,7 @@ class FileConfigModel(BaseModel):
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="insanonym_utils.models.DeleteIdOptions.column"><code class="name">var <span class="ident">column</span> : int</code></dt>
+<dt id="insanonym_utils.models.DeleteIdOptions.column"><code class="name">var <span class="ident">column</span> : str</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -284,7 +284,7 @@ class FileConfigModel(BaseModel):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class DeleteOptions(BaseModel):
-    columns: List[int]
+    columns: List[str]
     alias: str = NaN</code></pre>
 </details>
 <h3>Ancestors</h3>
@@ -298,7 +298,7 @@ class FileConfigModel(BaseModel):
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="insanonym_utils.models.DeleteOptions.columns"><code class="name">var <span class="ident">columns</span> : List[int]</code></dt>
+<dt id="insanonym_utils.models.DeleteOptions.columns"><code class="name">var <span class="ident">columns</span> : List[str]</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -348,7 +348,7 @@ class FileConfigModel(BaseModel):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class DisturbOptions(BaseModel):
-    column: int
+    column: str
     parameter: float</code></pre>
 </details>
 <h3>Ancestors</h3>
@@ -358,7 +358,7 @@ class FileConfigModel(BaseModel):
 </ul>
 <h3>Class variables</h3>
 <dl>
-<dt id="insanonym_utils.models.DisturbOptions.column"><code class="name">var <span class="ident">column</span> : int</code></dt>
+<dt id="insanonym_utils.models.DisturbOptions.column"><code class="name">var <span class="ident">column</span> : str</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -417,8 +417,8 @@ class FileConfigModel(BaseModel):
     columns: List[Column] = Field(..., description= &#34;Columns of submitted file&#34;)
     columns_delimiter: Literal[&#39;\t&#39;, &#39;\n&#39;] = &#39;\t&#39;
     algorithms: List[Union[
-        DeleteAlgorithm, 
-        DeleteIdAlgorithm, 
+        DeleteAlgorithm,
+        DeleteIdAlgorithm,
         DisturbAlgorithm, 
         PseudoAlgorithm,
         CustomAlgorithm
@@ -544,7 +544,7 @@ class FileConfigModel(BaseModel):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class PseudoOptions(BaseModel):
-    column: int</code></pre>
+    column: str</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -553,7 +553,7 @@ class FileConfigModel(BaseModel):
 </ul>
 <h3>Class variables</h3>
 <dl>
-<dt id="insanonym_utils.models.PseudoOptions.column"><code class="name">var <span class="ident">column</span> : int</code></dt>
+<dt id="insanonym_utils.models.PseudoOptions.column"><code class="name">var <span class="ident">column</span> : str</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>

@@ -44,7 +44,7 @@ Delete remplace toutes les valeurs des colonnes spécifiées par un texte de rem
     { 
         "name": "delete", 
         "options": { 
-            "columns": [1], 
+            "columns": ["id"], 
             "alias": "*"
         } 
     }
@@ -53,7 +53,7 @@ Delete remplace toutes les valeurs des colonnes spécifiées par un texte de rem
 ```
 
 - `"delete"` le nom de l'algorithme
-- `"columns"` une liste d'index a supprimer 
+- `"columns"` une liste de noms de colonnes à supprimer
 - `"alias"` (Optionnel, defaut: `Nan`) le texte de remplacement
 
 ## Delete_Ids
@@ -70,7 +70,7 @@ Remplace tous les ID spécifiés par un alias
     { 
         "name": "delete_ids", 
         "options": { 
-            "column": 1, 
+            "column": "id", 
             "ids": [512, 12],
             "alias": "*"
         } 
@@ -80,7 +80,7 @@ Remplace tous les ID spécifiés par un alias
 ```
 
 - `"delete_ids"` le nom de l'algorithme
-- `"column"` l'index de la colonne des identifiants
+- `"column"` le nom de la colonne des identifiants
 - `"ids"` une liste d'identifiants à supprimer
 - `"alias"` (Optionnel, defaut: `"DEL"`) le texte de remplacement
 
@@ -99,7 +99,7 @@ Cet algorithme utilise la loi uniforme pour effectuer la perturbation.
     { 
         "name": "disturb", 
         "options": { 
-            "column": 3, 
+            "column": "id", 
             "parameter": 0.6
         } 
     }
@@ -108,7 +108,7 @@ Cet algorithme utilise la loi uniforme pour effectuer la perturbation.
 ```
 
 - `"disturb"` le nom de l'algorithme
-- `"column"` l'index de la colonne à perturber
+- `"column"` le nom de la colonne à perturber
 - `"parameter"` le paramètre de perturbation (loi uniforme)
 
 ## Pseudo
@@ -125,7 +125,7 @@ Effectue une pseudo-anonymisation sur les valeurs d'une colonne.
     { 
         "name": "pseudo", 
         "options": { 
-            "column": 0
+            "column": "id"
         } 
     }
 ]
@@ -133,4 +133,4 @@ Effectue une pseudo-anonymisation sur les valeurs d'une colonne.
 ```
 
 - `"disturb"` le nom de l'algorithme
-- `"column"` l'index de la colonne à perturber
+- `"column"` le nom de la colonne à perturber
