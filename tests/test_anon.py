@@ -12,7 +12,7 @@ def test_create_dataframe():
 
 def test_delete_columns():
     model = _readModel(getcwd(), 'parser.cfg')
-    deleteAlgorithm = DeleteAlgorithm(name='delete', options=DeleteOptions(columns=[1,2]))
+    deleteAlgorithm = DeleteAlgorithm(name='delete', options=DeleteOptions(columns=['date', 'latitude']))
     model.algorithms = [ deleteAlgorithm ]
     df = Runner(model)
     df.execute()

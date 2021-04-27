@@ -5,15 +5,15 @@ from pydantic import BaseModel, DirectoryPath, FilePath, Field
 
 class Column(BaseModel):
     name: str
-    # column_type: Literal['int', 'str', 'datetime'] 
-    column_type: str
-    
+    column_type: Literal['int', 'str', 'datetime', 'float']
+    #column_type: str
+
 class FileModel(BaseModel):
     name: str
     path: FilePath
 
 class DeleteOptions(BaseModel):
-    columns: List[int]
+    columns: List[str]
     alias: str = NaN
 
 class DeleteAlgorithm(BaseModel):
@@ -21,7 +21,7 @@ class DeleteAlgorithm(BaseModel):
     options: DeleteOptions
 
 class DeleteIdOptions(BaseModel):
-    column: int
+    column: str
     ids: List[int]
     alias: str = 'DEL'
 
@@ -30,7 +30,7 @@ class DeleteIdAlgorithm(BaseModel):
     options: DeleteIdOptions
 
 class DisturbOptions(BaseModel):
-    column: int
+    column: str
     parameter: float
 
 class DisturbAlgorithm(BaseModel):
@@ -38,7 +38,7 @@ class DisturbAlgorithm(BaseModel):
     options: DisturbOptions
 
 class PseudoOptions(BaseModel):
-    column: int
+    column: str
 
 class PseudoAlgorithm(BaseModel):
     name: Literal['pseudo']
@@ -51,15 +51,15 @@ class CustomAlgorithm(BaseModel):
 class Exporter(BaseModel):
     output_name: str
     output_format: Literal['csv', 'json']
-    
+
 class FileConfigModel(BaseModel):
     name: str
     path: DirectoryPath
     columns: List[Column] = Field(..., description= "Columns of submitted file")
     columns_delimiter: Literal['\t', '\n'] = '\t'
     algorithms: List[Union[
-        DeleteAlgorithm, 
-        DeleteIdAlgorithm, 
+        DeleteAlgorithm,
+        DeleteIdAlgorithm,
         DisturbAlgorithm, 
         PseudoAlgorithm,
         CustomAlgorithm
