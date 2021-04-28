@@ -21,8 +21,6 @@ def delete(df, options):
     df: Dataframe
         The modified dataframe
     """
-    # for col in options.columns:
-        # if col 
     for col in options.columns:
         df.loc[:, col] = options.alias
     return df

@@ -16,7 +16,6 @@ class Runner:
         """`FileConfigModel` to use in the runner"""
         self.dataframe: DataFrame = DataFrame()
         """The resulting `DataFrame`"""
-
         # Verifications before creating DataFrame
         self._verifyRows(_file.path)
         column_names = list(map(lambda x: x.name, model.columns))
