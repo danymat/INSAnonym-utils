@@ -5,6 +5,8 @@ You can create an algorithm in 2 steps:
 1. Create a script
 2. Call in it the configuration file
 
+(A sample call from a custom function is defined in `/tests` folder.)
+
 ## Script creation
 
 The script created must be a simple python file, in the same directory as the configuration file.
