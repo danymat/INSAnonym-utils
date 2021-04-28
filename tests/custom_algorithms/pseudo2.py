@@ -1,6 +1,6 @@
 def main(df, options):
     """
-    Pseudo algorithm that replace each specified row by Nan values
+    Pseudo algorithm that replace each specified row by 'salut'
     """
     for row in options['columns']:
         df.iloc[:, row] = 'salut'
