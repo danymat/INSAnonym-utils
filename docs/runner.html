@@ -44,7 +44,6 @@ class Runner:
         &#34;&#34;&#34;`FileConfigModel` to use in the runner&#34;&#34;&#34;
         self.dataframe: DataFrame = DataFrame()
         &#34;&#34;&#34;The resulting `DataFrame`&#34;&#34;&#34;
-
         # Verifications before creating DataFrame
         self._verifyRows(_file.path)
         column_names = list(map(lambda x: x.name, model.columns))
@@ -134,7 +133,6 @@ class Runner:
         &#34;&#34;&#34;`FileConfigModel` to use in the runner&#34;&#34;&#34;
         self.dataframe: DataFrame = DataFrame()
         &#34;&#34;&#34;The resulting `DataFrame`&#34;&#34;&#34;
-
         # Verifications before creating DataFrame
         self._verifyRows(_file.path)
         column_names = list(map(lambda x: x.name, model.columns))
