@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "insanonym-utils"
-version = "0.10.2"
+version = "0.10.3"
 description = "Execute anonymization scripts over a table"
 authors = ["Daniel Mathiot <d.danymat@gmail.com>"]
 
