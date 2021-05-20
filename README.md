@@ -31,6 +31,11 @@ Version informations are in the github [Releases](https://github.com/danymat/INS
 - In order to understand how to create your own algorithm, please see [Algorithms Creation](docs/creation-algorithmes.md).
 - In order to see source code documentation, please follow the docs [INSAnonym-utils](https://danymat.github.io/INSAnonym-utils).
 
+## INSAnonym Related Documentation
+
+- [User guide (in french)](https://docs.google.com/document/d/e/2PACX-1vRsWLIR94CK-C_xYdUkOQA_OuL-BKQkW3dqUfbo4XIX4VpXYH961H7YQROf3r3LbQ/pub)
+- [Attack file example](https://docs.google.com/document/d/e/2PACX-1vTiYIYGasdf3aawHHPyTH6KZHBj61xEXNqjbtqfLiHS8xWhMI_CjjmYF4vLD65beo_r1O9NT_KsTlzg/pub)
+
 ## Development
 
 Prerequisites:
