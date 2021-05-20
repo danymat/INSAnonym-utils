@@ -16,9 +16,9 @@ def sample():
     "name": "", \
     "path": ".", \
     "columns": [ \
-        {"name": "", "column_type": "" }, \
-        {"name": "", "column_type": "" }, \
-        {"name": "", "column_type": "" } \
+        {"name": "column1", "column_type": "int" }, \
+        {"name": "column2", "column_type": "int" }, \
+        {"name": "column3", "column_type": "int" } \
     ], \
     "algorithms": [ \
     ], \
