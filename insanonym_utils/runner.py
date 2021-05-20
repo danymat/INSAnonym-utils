@@ -24,7 +24,7 @@ class Runner:
         if model.file_type == 'json':
             self.dataframe = read_json(path_or_buf=_file.path, orient='index')
         elif model.file_type == 'csv':
-            self.dataframe = read_csv(filepath_or_buffer=_file.path, sep=model.columns_delimiter)
+            self.dataframe = read_csv(filepath_or_buffer=_file.path, sep=model.columns_delimiter, header=None)
         self.dataframe.columns = column_names
         self._typeChecking(model.columns)
 
@@ -70,7 +70,7 @@ class Runner:
         """
         exporter = self.model.export_rules
         if exporter.output_format == 'csv':
-            self.dataframe.to_csv(path_or_buf=exporter.output_name, sep=self.model.columns_delimiter, index=False)
+            self.dataframe.to_csv(path_or_buf=exporter.output_name, sep=self.model.columns_delimiter, index=False, header=False)
         elif exporter.output_format == 'json':
             self.dataframe.to_json(exporter.output_name, index=False)
         else: raise NotImplementedError
