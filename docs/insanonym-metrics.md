@@ -41,7 +41,7 @@ This metric consits in calculating the difference of days of each row between th
 
 This metric consits in calculating the difference of hours of each row between the original and anonymized dataframe.
 We doesn't value the difference of days: 
-- e.g an anonymized row with date=26/03/2020 11:20:21 and the original with date=20/03/2020 10:20:21 will count only 1 hour of difference (despite the facte taht the days have changed).
+- e.g an anonymized row with date=26/03/2020 11:20:21 and the original with date=20/03/2020 10:20:21 will count only 1 hour of difference (despite the fact that the days have changed).
 
 ### Score
 
@@ -51,8 +51,8 @@ We doesn't value the difference of days:
 
 ```python
 hourdec = [
-  1, 0.9, 0.8, 0.6, 0.4, 0.2, 0, 0.1, 0.2, 0.3, 
-  0.4, 0.5, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0, 0.2, 
+  1, 0.9, 0.8, 0.6, 0.4, 0.2, 0, 0.1, 0.2, 0.3,
+  0.4, 0.5, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0, 0.2,
   0.4, 0.6, 0.8, 0.9
  ]
 ```
@@ -79,7 +79,42 @@ We look the 3 most important POIs for each week in the dataset.
 
 ## Distance_Utility
 
+### Summary
+
+This metric will compare the distance between the coordinates of the anonymized and original dataset.
+
+### Scoring
+
+The score for each line is created with the following function:
+
+```python
+def calcul_utility(diff):
+    score = diff*(-1/dx) + 1
+    if(score < 0):
+        return 0
+    return score
+```
+
+With `dx` being one of the following (currently at 0.1):
+
+```
+#################################
+#         Global variables      #
+# To know:                      #
+# dx =1 means that you allow    #
+# a maximum of 111.195km        #
+# 0.0001 : cell at meter        #
+# 0.001 : cell at street        #
+# 0.01 : cell at district       #
+# 0.1 : cell at city            #
+# 1 : cell at region            #
+# 10 : cell at country          #
+#                               #
+#################################
+```
+
 ## Meet_Utility
+
 
 ## Tuile_Utility
 
