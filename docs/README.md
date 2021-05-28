@@ -25,3 +25,4 @@ The aim of the library is to ease writing and processing algorithms on a datafra
 - [First steps](https://github.com/danymat/INSAnonym-utils/blob/main/docs/premiers-pas.md)
 - In order to know more about pre-defined algorithms, please see [Algorithms](https://github.com/danymat/INSAnonym-utils/blob/main/docs/algorithmes.md).
 - In order to understand how to create your own algorithm, please see [Algorithms Creation](https://github.com/danymat/INSAnonym-utils/blob/main/docs/creation-algorithmes.md).
+- To know the utility metrics used in the competition, please see [Metrics](https://github.com/danymat/INSAnonym-utils/blob/main/docs/insanonym-metrics.md).
