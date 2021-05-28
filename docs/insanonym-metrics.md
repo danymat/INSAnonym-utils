@@ -14,6 +14,17 @@
 - [Naive_Attack](#naive_attack)
 
 *Note: source code for provided metrics and attacks are available [here](https://github.com/danymat/INSAnonym-utils/tree/main/metrics)*
+If you want to test the metrics, you can do the following:
+
+```bash
+git clone https://github.com/danymat/INSAnonym-utils.git
+cd INSAnonym-utils/metrics
+# Please install pandas before (with pip install pandas)
+# Replace utility with the script name you want to use
+# e.g for utility_distance.py: utility_distance
+# For all options please do python3 runner.py --help
+python3 runner.py path/to/anon path/to/original utility 
+```
 
 ## Considerations
 
