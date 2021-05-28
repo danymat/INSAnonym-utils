@@ -115,8 +115,48 @@ With `dx` being one of the following (currently at 0.1):
 
 ## Meet_Utility
 
+### Summary
+
+This metric will try to identify the cells with the most users.
+
+### Scoring
+
+- Only the top n% unique cells are kept.
+- The score is calculated by counting 1 if the cell is found in the anonymized script, and 0 else.
+- The score is then divided by the number of cells compared
 
 ## Tuile_Utility
 
+### Summary
+
+This metric will count the times each unique position was found.
+For example, if the user 1 was present in position X/Y two times, the count will be two for this position.
+
+### Score
+
+For each found position for a user:
+
+```python 
+def createScore(row):
+    if pd.isnull(row['count_x']) or pd.isnull(row['count_y']):
+        score = 0
+    elif row['count_x'] > row['count_y']:
+        score = row['count_y'] / row['count_x']
+    else:
+        score = row['count_x'] / row['count_y']
+    return score
+```
 ## Naive_Attack
+
+### Summary 
+
+This naive attack will try to correlate the id anonymized with the id in original file with the following:
+
+- It calculates how many times a user was found in a week (for both original and anonymized file)
+- Based on the number of times a user was found in the anonymized file, it will find the user that matches the same count.
+
+### Score
+
+- Each correct guess equals to 1 point, and each wrong one to 0
+- Score is divided by the number of rows to check
 
