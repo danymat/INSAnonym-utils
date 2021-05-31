@@ -29,6 +29,7 @@ This is a sample from the file:
 ```
 
 The columns are:
+
 ```python
 [ 'id', 'date', 'latitude', 'longitude' ]
 ```
@@ -53,6 +54,8 @@ id  0   1   2   ... 10  11  12
 ```
 
 - It is forbidden top change the number of lines and columns. Your submission is automatically randomized in the server.
+
+- With the previous point in mind, in order to delete lines, you can replace the id with `DEL` in the line.
 
 - The date can be modified but:
     - The modified date has to be in the same week.
