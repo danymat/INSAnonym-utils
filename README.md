@@ -34,7 +34,7 @@ Version informations are in the github [Releases](https://github.com/danymat/INS
 ## INSAnonym Related Documentation
 
 - To know the utility metrics used in the competition, please see [Metrics](https://github.com/danymat/INSAnonym-utils/blob/main/docs/insanonym-metrics.md).
-- [User guide (in french)](https://docs.google.com/document/d/e/2PACX-1vRsWLIR94CK-C_xYdUkOQA_OuL-BKQkW3dqUfbo4XIX4VpXYH961H7YQROf3r3LbQ/pub)
+- [User guide](https://github.com/danymat/INSAnonym-utils/blob/main/docs/user-documentation-insanonym.md)
 - [Attack file example](https://docs.google.com/document/d/e/2PACX-1vTiYIYGasdf3aawHHPyTH6KZHBj61xEXNqjbtqfLiHS8xWhMI_CjjmYF4vLD65beo_r1O9NT_KsTlzg/pub)
 
 ## Development
