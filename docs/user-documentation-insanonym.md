@@ -86,6 +86,8 @@ An attack file must be a binding between the id, and for each week, a guess of o
 
 - The file must be a `json` file.
 - You can submit at most 10 attack files per submission.
+- If you think an id has been deleted for the week, you can specify `"DEL"` in one of your guesses.
+- If a user is not present in the given week in original file (e.g the id 7 is not present at week 12), the server will automatically skip this week for the id (No score will be given for this user at the given week.)
 
 Below is an example of an attack file.
 
@@ -121,6 +123,8 @@ Below is an example of an attack file.
    }
 }
 ```
+
+### Scoring
 
 Each team can propose multiple guesses in each week for an identifier, but if doing so, if there's a correct guess, it'll be divided by the number of guesses.
 
