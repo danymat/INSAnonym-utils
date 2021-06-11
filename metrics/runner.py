@@ -17,13 +17,11 @@ def remove_del(df):
 
 def open_dataframe(arg):
     file = open(arg)
-    df = pd.read_csv(file, delimiter='\t', header=None)
+    df = pd.read_csv(file, delimiter='\t', header=None, 
+        dtype={ 'id': 'category', 'latitude': 'category', 'longitude': 'category' },
+        names=['id', 'date', 'latitude', 'longitude' ])
     # Change types
-    df.columns = ['id', 'date', 'latitude', 'longitude' ]
     df['date'] = pd.to_datetime(df['date'])
-    df['id'] = df['id'].astype('category')
-    df['latitude'] = df['latitude'].astype('category')
-    df['longitude'] = df['longitude'].astype('category')
     return df
 
 
