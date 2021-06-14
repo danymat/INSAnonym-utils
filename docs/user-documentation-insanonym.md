@@ -53,7 +53,7 @@ id  0   1   2   ... 10  11  12
 32  7   12  1   ... DEL DEL AAAC2
 ```
 
-- It is forbidden top change the number of lines and columns. Your submission is automatically randomized in the server.
+- It is forbidden to change the number of lines and columns. Your submission is automatically randomized in the server.
 
 - With the previous point in mind, in order to delete lines, you can replace the id with `DEL` in the line.
 
