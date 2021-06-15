@@ -38,7 +38,7 @@ if __name__ == "__main__":
     size_df = len(df_origin)
 
     df_anon = df_anon.loc[df_anon['id'] != "DEL"]
-    if args.script in ["utility_tuile", "utility_POI"]:
+    if args.script not in ["utility_tuile", "utility_POI", "utility_meet"]:
         df_origin = df_origin.loc[df_anon.index]
 
     score = 0
