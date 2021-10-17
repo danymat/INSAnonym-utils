@@ -15,7 +15,7 @@ def main(df_anon, df_original, params, nb_orig_lines):
     })
 
     # Keep only rows that changed hours
-    filter = df['df_hour'] - df[ 'df_origin_hour'] >= 1
+    filter = abs(df['df_hour'] - df[ 'df_origin_hour']) >= 1
     df = df.loc[filter] 
 
     # Substract 0.1 points per hour (even if days are identical)
