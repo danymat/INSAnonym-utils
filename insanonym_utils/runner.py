@@ -58,10 +58,10 @@ class Runner:
         """
         for algo in self.model.algorithms:
             if not isinstance(algo, CustomAlgorithm):
-                globals()[algo.name](self.dataframe, algo.options)
+                self.dataframe = globals()[algo.name](self.dataframe, algo.options)
             else:
                 mod = importlib.import_module(algo.name)
-                mod.main(self.dataframe, algo.options)
+                self.dataframe = mod.main(self.dataframe, algo.options)
         if self.model.export: self.save()
 
     def save(self):
